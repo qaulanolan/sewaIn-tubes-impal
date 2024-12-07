@@ -26,7 +26,7 @@
                   <ul>
                      <li><a href="dashboard.php">dashboard</a></li>
                      <li><a href="post_product.php">sewaIn produk</a></li>
-                     <li><a href="my_listings.php">sewa saya</a></li>
+                     <li><a href="my_listings.php">my listings</a></li>
                   </ul>
                </li>
                <li><a href="#">produk<i class="fas"></i></a>
