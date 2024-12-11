@@ -136,7 +136,7 @@ if(isset($_COOKIE['user_id'])){
                </div>
             </div>
          </div>
-         <p>tigor gaming, sit amet consectetur adipisicing elit. Adipisci voluptates delectus distinctio quam sequi error eum suscipit tempore inventore ex!</p>
+         <p>tigor gaming 123, sit amet consectetur adipisicing elit. Adipisci voluptates delectus distinctio quam sequi error eum suscipit tempore inventore ex!</p>
       </div>
 
       <div class="box">
