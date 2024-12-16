@@ -112,7 +112,7 @@ include 'components/save_send.php';
             </div>
             <div class="flex-btn">
                <a href="view_product.php?get_id=<?= $fetch_product['id']; ?>" class="btn">lihat produk</a>
-               <a href="tel:1234567890"<?= $fetch_user['number']; ?> class="btn">hubungi lessor</a>
+               <a href="tel:+62<?= $fetch_user['number']; ?>"<?= $fetch_user['number']; ?> class="btn">hubungi lessor</a>
                <input type="submit" value="pesan" name="send" class="btn">
             </div>
          </div>

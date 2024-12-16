@@ -24,36 +24,10 @@ if(isset($_POST['update'])){
    $product_name = filter_var($product_name, FILTER_SANITIZE_STRING);
    $price = $_POST['price'];
    $price = filter_var($price, FILTER_SANITIZE_STRING);
-   $deposite = $_POST['deposite'];
-   $deposite = filter_var($deposite, FILTER_SANITIZE_STRING);
    $address = $_POST['address'];
    $address = filter_var($address, FILTER_SANITIZE_STRING);
-   $offer = $_POST['offer'];
-   $offer = filter_var($offer, FILTER_SANITIZE_STRING);
    $type = $_POST['type'];
    $type = filter_var($type, FILTER_SANITIZE_STRING);
-   $status = $_POST['status'];
-   $status = filter_var($status, FILTER_SANITIZE_STRING);
-   $furnished = $_POST['furnished'];
-   $furnished = filter_var($furnished, FILTER_SANITIZE_STRING);
-   $bhk = $_POST['bhk'];
-   $bhk = filter_var($bhk, FILTER_SANITIZE_STRING);
-   $bedroom = $_POST['bedroom'];
-   $bedroom = filter_var($bedroom, FILTER_SANITIZE_STRING);
-   $bathroom = $_POST['bathroom'];
-   $bathroom = filter_var($bathroom, FILTER_SANITIZE_STRING);
-   $balcony = $_POST['balcony'];
-   $balcony = filter_var($balcony, FILTER_SANITIZE_STRING);
-   $carpet = $_POST['carpet'];
-   $carpet = filter_var($carpet, FILTER_SANITIZE_STRING); 
-   $age = $_POST['age'];
-   $age = filter_var($age, FILTER_SANITIZE_STRING);
-   $total_floors = $_POST['total_floors'];
-   $total_floors = filter_var($total_floors, FILTER_SANITIZE_STRING);
-   $room_floor = $_POST['room_floor'];
-   $room_floor = filter_var($room_floor, FILTER_SANITIZE_STRING);
-   $loan = $_POST['loan'];
-   $loan = filter_var($loan, FILTER_SANITIZE_STRING);
    $description = $_POST['description'];
    $description = filter_var($description, FILTER_SANITIZE_STRING);
 
@@ -245,8 +219,8 @@ if(isset($_POST['update'])){
       }
    }
 
-   $update_listing = $conn->prepare("UPDATE `product` SET product_name = ?, address = ?, price = ?, type = ?, offer = ?, status = ?, furnished = ?, bhk = ?, deposite = ?, bedroom = ?, bathroom = ?, carpet = ?, age = ?, total_floors = ?, room_floor = ?, loan = ?, lift = ?, security_guard = ?, play_ground = ?, garden = ?, water_supply = ?, power_backup = ?, parking_area = ?, gym = ?, shopping_mall = ?, hospital = ?, school = ?, market_area = ?, description = ? WHERE id = ?");   
-   $update_listing->execute([$product_name, $address, $price, $type, $offer, $status, $furnished, $bhk, $deposite, $bedroom, $bathroom, $carpet, $age, $total_floors, $room_floor, $loan, $lift, $security_guard, $play_ground, $garden, $water_supply, $power_backup, $parking_area, $gym, $shopping_mall, $hospital, $school, $market_area, $description, $update_id]);
+   $update_listing = $conn->prepare("UPDATE `product` SET product_name = ?, address = ?, price = ?, type = ?,description = ? WHERE id = ?");   
+   $update_listing->execute([$product_name, $address, $price, $type, $description, $update_id]);
 
    $success_msg[] = 'listing updated successfully!';
 
@@ -352,156 +326,22 @@ if(isset($_POST['delete_image_05'])){
             <input type="number" name="price" required min="0" max="9999999999" maxlength="10" value="<?= $fetch_product['price']; ?>" placeholder="enter product price" class="input">
          </div>
          <div class="box">
-            <p>deposite amount <span>*</span></p>
-            <input type="number" name="deposite" required min="0" max="9999999999" value="<?= $fetch_product['deposite']; ?>" maxlength="10" placeholder="enter deposite amount" class="input">
-         </div>
-         <div class="box">
             <p>product address <span>*</span></p>
             <input type="text" name="address" required maxlength="100" placeholder="enter product full address" class="input" value="<?= $fetch_product['address']; ?>">
-         </div>
-         <div class="box">
-            <p>offer type <span>*</span></p>
-            <select name="offer" required class="input">
-               <option value="<?= $fetch_product['offer']; ?>" selected><?= $fetch_product['offer']; ?></option>
-               <option value="sale">sale</option>
-               <option value="resale">resale</option>
-               <option value="rent">rent</option>
-            </select>
          </div>
          <div class="box">
             <p>product type <span>*</span></p>
             <select name="type" required class="input">
                <option value="<?= $fetch_product['type']; ?>" selected><?= $fetch_product['type']; ?></option>
-               <option value="flat">flat</option>
-               <option value="house">house</option>
-               <option value="shop">shop</option>
-            </select>
-         </div>
-         <div class="box">
-            <p>product status <span>*</span></p>
-            <select name="status" required class="input">
-               <option value="<?= $fetch_product['status']; ?>" selected><?= $fetch_product['status']; ?></option>
-               <option value="ready to move">ready to move</option>
-               <option value="under construction">under construction</option>
-            </select>
-         </div>
-         <div class="box">
-            <p>furnished status <span>*</span></p>
-            <select name="furnished" required class="input">
-               <option value="<?= $fetch_product['furnished']; ?>" selected><?= $fetch_product['furnished']; ?></option>
-               <option value="furnished">furnished</option>
-               <option value="semi-furnished">semi-furnished</option>
-               <option value="unfurnished">unfurnished</option>
-            </select>
-         </div>
-         <div class="box">
-            <p>how many BHK <span>*</span></p>
-            <select name="bhk" required class="input">
-               <option value="<?= $fetch_product['bhk']; ?>" selected><?= $fetch_product['bhk']; ?> BHK</option>
-               <option value="1">1 BHK</option>
-               <option value="2">2 BHK</option>
-               <option value="3">3 BHK</option>
-               <option value="4">4 BHK</option>
-               <option value="5">5 BHK</option>
-               <option value="6">6 BHK</option>
-               <option value="7">7 BHK</option>
-               <option value="8">8 BHK</option>
-               <option value="9">9 BHK</option>
-            </select>
-         </div>
-         <div class="box">
-            <p>how many bedrooms <span>*</span></p>
-            <select name="bedroom" required class="input">
-               <option value="<?= $fetch_product['bedroom']; ?>" selected><?= $fetch_product['bedroom']; ?> bedroom</option>
-               <option value="0">0 bedroom</option>
-               <option value="1">1 bedroom</option>
-               <option value="2">2 bedroom</option>
-               <option value="3">3 bedroom</option>
-               <option value="4">4 bedroom</option>
-               <option value="5">5 bedroom</option>
-               <option value="6">6 bedroom</option>
-               <option value="7">7 bedroom</option>
-               <option value="8">8 bedroom</option>
-               <option value="9">9 bedroom</option>
-            </select>
-         </div>
-         <div class="box">
-            <p>how many bathrooms <span>*</span></p>
-            <select name="bathroom" required class="input">
-               <option value="<?= $fetch_product['bathroom']; ?>" selected><?= $fetch_product['bathroom']; ?> bathroom</option>
-               <option value="1">1 bathroom</option>
-               <option value="2">2 bathroom</option>
-               <option value="3">3 bathroom</option>
-               <option value="4">4 bathroom</option>
-               <option value="5">5 bathroom</option>
-               <option value="6">6 bathroom</option>
-               <option value="7">7 bathroom</option>
-               <option value="8">8 bathroom</option>
-               <option value="9">9 bathroom</option>
-            </select>
-         </div>
-         <div class="box">
-            <p>how many balconys <span>*</span></p>
-            <select name="balcony" required class="input">
-               <option value="<?= $fetch_product['balcony']; ?>" selected><?= $fetch_product['balcony']; ?> balcony</option>
-               <option value="0">0 balcony</option>
-               <option value="1">1 balcony</option>
-               <option value="2">2 balcony</option>
-               <option value="3">3 balcony</option>
-               <option value="4">4 balcony</option>
-               <option value="5">5 balcony</option>
-               <option value="6">6 balcony</option>
-               <option value="7">7 balcony</option>
-               <option value="8">8 balcony</option>
-               <option value="9">9 balcony</option>
-            </select>
-         </div>
-         <div class="box">
-            <p>carpet area <span>*</span></p>
-            <input type="number" name="carpet" required min="1" max="9999999999" maxlength="10" placeholder="how many squarefits?" class="input" value="<?= $fetch_product['carpet']; ?>">
-         </div>
-         <div class="box">
-            <p>product age <span>*</span></p>
-            <input type="number" name="age" required min="0" max="99" maxlength="2" placeholder="how old is product?" class="input" value="<?= $fetch_product['age']; ?>">
-         </div>
-         <div class="box">
-            <p>total floors <span>*</span></p>
-            <input type="number" name="total_floors" required min="0" max="99" maxlength="2" placeholder="how floors available?" class="input" value="<?= $fetch_product['total_floors']; ?>">
-         </div>
-         <div class="box">
-            <p>floor room <span>*</span></p>
-            <input type="number" name="room_floor" required min="0" max="99" maxlength="2" placeholder="product floor number" class="input" value="<?= $fetch_product['room_floor']; ?>">
-         </div>
-         <div class="box">
-            <p>loan <span>*</span></p>
-            <select name="loan" required class="input">
-               <option value="<?= $fetch_product['loan']; ?>" selected><?= $fetch_product['loan']; ?></option>
-               <option value="available">available</option>
-               <option value="not available" >not available</option>
+               <option value="properti">properti</option>
+               <option value="barang">barang</option>
+               <option value="kendaraan">kendaraan</option>
             </select>
          </div>
       </div>
       <div class="box">
          <p>product description <span>*</span></p>
          <textarea name="description" maxlength="1000" class="input" required cols="30" rows="10" placeholder="write about product..." ><?= $fetch_product['description']; ?></textarea>
-      </div>
-      <div class="checkbox">
-         <div class="box">
-            <p><input type="checkbox" name="lift" value="yes" <?php if($fetch_product['lift'] == 'yes'){echo 'checked'; } ?> />lifts</p>
-            <p><input type="checkbox" name="security_guard" value="yes" <?php if($fetch_product['security_guard'] == 'yes'){echo 'checked'; } ?> />security guard</p>
-            <p><input type="checkbox" name="play_ground" value="yes" <?php if($fetch_product['play_ground'] == 'yes'){echo 'checked'; } ?> />play ground</p>
-            <p><input type="checkbox" name="garden" value="yes" <?php if($fetch_product['garden'] == 'yes'){echo 'checked'; } ?> />garden</p>
-            <p><input type="checkbox" name="water_supply" value="yes" <?php if($fetch_product['water_supply'] == 'yes'){echo 'checked'; } ?> />water supply</p>
-            <p><input type="checkbox" name="power_backup" value="yes" <?php if($fetch_product['power_backup'] == 'yes'){echo 'checked'; } ?> />power backup</p>
-         </div>
-         <div class="box">
-            <p><input type="checkbox" name="parking_area" value="yes" <?php if($fetch_product['parking_area'] == 'yes'){echo 'checked'; } ?> />parking area</p>
-            <p><input type="checkbox" name="gym" value="yes" <?php if($fetch_product['gym'] == 'yes'){echo 'checked'; } ?> />gym</p>
-            <p><input type="checkbox" name="shopping_mall" value="yes" <?php if($fetch_product['shopping_mall'] == 'yes'){echo 'checked'; } ?> />shopping_mall</p>
-            <p><input type="checkbox" name="hospital" value="yes" <?php if($fetch_product['hospital'] == 'yes'){echo 'checked'; } ?> />hospital</p>
-            <p><input type="checkbox" name="school" value="yes" <?php if($fetch_product['school'] == 'yes'){echo 'checked'; } ?> />school</p>
-            <p><input type="checkbox" name="market_area" value="yes" <?php if($fetch_product['market_area'] == 'yes'){echo 'checked'; } ?> />market area</p>
-         </div>
       </div>
       <div class="box">
          <img src="uploaded_files/<?= $fetch_product['image_01']; ?>" class="image" alt="">

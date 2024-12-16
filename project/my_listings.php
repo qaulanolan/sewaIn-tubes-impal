@@ -123,7 +123,7 @@ if(isset($_POST['delete'])){
       <h3 class="name"><?= $fetch_product['product_name']; ?></h3>
       <p class="location"><i class="fas fa-map-marker-alt"></i><span><?= $fetch_product['address']; ?></span></p>
       <div class="flex-btn">
-         <a href="update_product.php?get_id=<?= $product_id; ?>" class="btn">update</a>
+         <a href="update_property.php?get_id=<?= $product_id; ?>" class="btn">update</a>
          <input type="submit" name="delete" value="delete" class="btn" onclick="return confirm('batalkan sewa ini?');">
       </div>
       <a href="view_product.php?get_id=<?= $product_id; ?>" class="btn">lihat produk</a>

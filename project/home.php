@@ -135,6 +135,7 @@ include 'components/save_send.php';
                <p class="total-images"><i class="far fa-image"></i><span><?= $total_images; ?></span></p> 
                <img src="uploaded_files/<?= $fetch_product['image_01']; ?>" alt="">
             </div>
+            <!-- ini buat nampiliin profile -->
             <div class="admin">
                <h3><?= substr($fetch_user['name'], 0, 1); ?></h3>
                <div>
@@ -153,7 +154,7 @@ include 'components/save_send.php';
             </div>
             <div class="flex-btn">
                <a href="view_product.php?get_id=<?= $fetch_product['id']; ?>" class="btn">lihat produk</a>
-               <a href="tel:1234567890"<?= $fetch_user['number']; ?> class="btn">hubungi lessor</a>
+               <a href="tel:+62<?= $fetch_user['number']; ?>"<?= $fetch_user['number']; ?> class="btn">hubungi lessor</a>
                <input type="submit" value="pesan" name="send" class="btn">
             </div>
          </div>
@@ -174,12 +175,6 @@ include 'components/save_send.php';
 </section>
 
 <!-- listings section ends -->
-
-
-
-
-
-
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
