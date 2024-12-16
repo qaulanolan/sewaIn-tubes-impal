@@ -81,10 +81,10 @@ if(isset($_POST['submit'])){
       <h3>create an account!</h3>
       <input type="tel" name="name" required maxlength="50" placeholder="enter your name" class="box">
       <input type="email" name="email" required maxlength="50" placeholder="enter your email" class="box">
-      <input type="number" name="number" required min="0" max="9999999999" maxlength="10" placeholder="enter your number" class="box">
+      <input type="number" name="number" required min="0" max="999999999999" maxlength="12" placeholder="enter your number" class="box">
       <input type="password" name="pass" required maxlength="20" placeholder="enter your password" class="box">
       <input type="password" name="c_pass" required maxlength="20" placeholder="confirm your password" class="box">
-      <p>already have an account? <a href="login.html">login now</a></p>
+      <p>already have an account? <a href="login.php">login now</a></p>
       <input type="submit" value="register now" name="submit" class="btn">
    </form>
 

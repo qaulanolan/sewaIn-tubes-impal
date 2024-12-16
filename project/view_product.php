@@ -84,49 +84,11 @@ include 'components/save_send.php';
       <div class="info">
          <p><i class="fas fa-rupiah-sign"></i><span><?= $fetch_product['price']; ?></span></p>
          <p><i class="fas fa-user"></i><span><?= $fetch_user['name']; ?></span></p>
-         <p><i class="fas fa-phone"></i><a href="tel:1234567890"><?= $fetch_user['number']; ?></a></p>
+         <p><i class="fas fa-phone"></i><a href="tel:+62<?= $fetch_user['number']; ?>"><?= $fetch_user['number']; ?></a></p>
          <p><i class="fas fa-layer-group"></i><span><?= $fetch_product['type']; ?></span></p>
          <!-- <p><i class="fas fa-layer-group"></i><span><?= $fetch_product['offer']; ?></span></p> -->
          <p><i class="fas fa-calendar"></i><span><?= $fetch_product['date']; ?></span></p>
       </div>
-      <!-- <h3 class="title">details</h3>
-      <div class="flex">
-         <div class="box">
-            <p><i>rooms :</i><span><?= $fetch_product['bhk']; ?> BHK</span></p>
-            <p><i>deposit amount : </i><span><span class="fas fa-rupiah-sign" style="margin-right: .5rem;"></span><?= $fetch_product['deposite']; ?></span></p>
-            <p><i>status :</i><span><?= $fetch_product['status']; ?></span></p>
-            <p><i>bedroom :</i><span><?= $fetch_product['bedroom']; ?></span></p>
-            <p><i>bathroom :</i><span><?= $fetch_product['bathroom']; ?></span></p>
-            <p><i>balcony :</i><span><?= $fetch_product['balcony']; ?></span></p>
-         </div>
-         <div class="box">
-            <p><i>carpet area :</i><span><?= $fetch_product['carpet']; ?>sqft</span></p>
-            <p><i>age :</i><span><?= $fetch_product['age']; ?> years</span></p>
-            <p><i>total floors :</i><span><?= $fetch_product['total_floors']; ?></span></p>
-            <p><i>room floor :</i><span><?= $fetch_product['room_floor']; ?></span></p>
-            <p><i>furnished :</i><span><?= $fetch_product['furnished']; ?></span></p>
-            <p><i>loan :</i><span><?= $fetch_product['loan']; ?></span></p>
-         </div>
-      </div> -->
-      <!-- <h3 class="title">amenities</h3>
-      <div class="flex">
-         <div class="box">
-            <p><i class="fas fa-<?php if($fetch_product['lift'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>lifts</span></p>
-            <p><i class="fas fa-<?php if($fetch_product['security_guard'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>security guards</span></p>
-            <p><i class="fas fa-<?php if($fetch_product['play_ground'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>play ground</span></p>
-            <p><i class="fas fa-<?php if($fetch_product['garden'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>gardens</span></p>
-            <p><i class="fas fa-<?php if($fetch_product['water_supply'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>water supply</span></p>
-            <p><i class="fas fa-<?php if($fetch_product['power_backup'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>power backup</span></p>
-         </div>
-         <div class="box">
-            <p><i class="fas fa-<?php if($fetch_product['parking_area'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>parking area</span></p>
-            <p><i class="fas fa-<?php if($fetch_product['gym'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>gym</span></p>
-            <p><i class="fas fa-<?php if($fetch_product['shopping_mall'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>shopping mall</span></p>
-            <p><i class="fas fa-<?php if($fetch_product['hospital'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>hospital</span></p>
-            <p><i class="fas fa-<?php if($fetch_product['school'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>schools</span></p>
-            <p><i class="fas fa-<?php if($fetch_product['market_area'] == 'yes'){echo 'check';}else{echo 'times';} ?>"></i><span>market area</span></p>
-         </div>
-      </div> -->
       <h3 class="title">description</h3>
       <p class="description"><?= $fetch_product['description']; ?></p>
       <form action="" method="post" class="flex-btn">
