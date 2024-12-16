@@ -106,7 +106,7 @@ if(isset($_POST['submit'])){
       <h3>update your account!</h3>
       <input type="tel" name="name" maxlength="50" placeholder="<?= $fetch_user['name']; ?>" class="box">
       <input type="email" name="email" maxlength="50" placeholder="<?= $fetch_user['email']; ?>" class="box">
-      <input type="number" name="number" min="0" max="9999999999" maxlength="10" placeholder="<?= $fetch_user['number']; ?>" class="box">
+      <input type="number" name="number" min="0" max="9999999999999" maxlength="13" placeholder="<?= $fetch_user['number']; ?>" class="box">
       <input type="password" name="old_pass" maxlength="20" placeholder="enter your old password" class="box">
       <input type="password" name="new_pass" maxlength="20" placeholder="enter your new password" class="box">
       <input type="password" name="c_pass" maxlength="20" placeholder="confirm your new password" class="box">
