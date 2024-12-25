@@ -35,9 +35,41 @@ include 'components/save_send.php';
 
 <!-- recommendation section starts -->
 <section class="recommendation">
-   <h1 class="heading">recommendation</h1>
+    <h1 class="heading">Recommendation</h1>
+    <div id="recommendation-container">
+        <?php
+        // Check if user is logged in
+        $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
-</sectionclas>
+        // Fetch recommendations from the Python API
+        $api_url = "http://localhost:5000/recommendations?user_id=" . urlencode($user_id);
+        $response = file_get_contents($api_url);
+        $recommendations = json_decode($response, true);
+
+        if (!empty($recommendations)) {
+            foreach ($recommendations as $item) {
+                echo "<a href='view_product.php?get_id=" . htmlspecialchars($item['id']) . "' class='product-box'>";
+                
+                // Display the product image dynamically
+                if (!empty($item['image_01'])) {
+                    echo "<div class='product-image'><img src='uploaded_files/" . htmlspecialchars($item['image_01']) . "' alt='" . htmlspecialchars($item['product_name']) . "'></div>";
+                } else {
+                    // Placeholder image if no image exists
+                    echo "<div class='product-image'><img src='uloaded_files/no-image.jpg' alt='No Image Available'></div>";
+                }
+
+                echo "<div class='product-info'>";
+                echo "<h4 class='product-name'>" . htmlspecialchars($item['product_name']) . "</h4>";
+                echo "<p class='product-price fas fa-rupiah-sign'> " . number_format($item['price']) . "</p>";
+                echo "</div>";
+                echo "</a>";
+            }
+        } else {
+            echo "<p>No recommendations available at the moment.</p>";
+        }
+        ?>
+    </div>
+</section>
 <!-- recommendation section ends -->
 
 <!-- services section starts  -->
@@ -179,7 +211,7 @@ include 'components/save_send.php';
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
-<?php include 'components/footer.php'; ?>
+
 
 <!-- custom js file link  -->
 <script src="js/script.js"></script>
@@ -195,5 +227,6 @@ include 'components/save_send.php';
 
 </script>
 
+<?php include 'components/footer.php'; ?>
 </body>
 </html>

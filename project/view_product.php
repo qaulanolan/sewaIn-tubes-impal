@@ -14,6 +14,10 @@ if(isset($_GET['get_id'])){
    $get_id = '';
    header('location:home.php');
 }
+// Increment click count
+$product_id = $_GET['get_id']; // Get the product ID from the URL
+$update_query = $conn->prepare("UPDATE product SET click_count = click_count + 1 WHERE id = ?");
+$update_query->execute([$product_id]);
 
 include 'components/save_send.php';
 
