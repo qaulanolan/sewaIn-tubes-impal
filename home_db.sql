@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2024 at 01:13 PM
+-- Generation Time: Dec 25, 2024 at 09:37 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -54,6 +54,13 @@ CREATE TABLE `messages` (
   `message` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`id`, `name`, `email`, `number`, `message`) VALUES
+('4FdYsSYWfZdvV8nqlJKI', 'olan', 'olan@gmail.com', '8139423496', 'tes pesan');
+
 -- --------------------------------------------------------
 
 --
@@ -73,17 +80,18 @@ CREATE TABLE `product` (
   `image_04` varchar(50) NOT NULL,
   `image_05` varchar(50) NOT NULL,
   `description` varchar(1000) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp()
+  `date` date NOT NULL DEFAULT current_timestamp(),
+  `click_count` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `user_id`, `product_name`, `address`, `price`, `type`, `image_01`, `image_02`, `image_03`, `image_04`, `image_05`, `description`, `date`) VALUES
-('CLHgmSORjF4FnMxRvuLc', '2kjuuLmAbCPEXx6NvUfY', 'W11', 'Bandung', '99999999', 'kendaraan', 'vOW8WUEdHbpSH1w2kQf9.jpg', 'hkpuf34R1hJDKCdqG1oA.jpg', 'v2B7onGlXfHSuo9DTioO.jpg', '', '', 'Mercedes-AMG F1 W11 EQ Performance adalah sebuah mobil balap Formula Satu yang didesain dan dibangun oleh tim Mercedes-AMG Petronas F1 untuk berkompetisi di musim balap Formula Satu 2020. Mobil ini dikenal sangat dominan di musim tersebut dan berhasil membawa tim Mercedes meraih gelar juara dunia konstruktor dan pembalap (diraih oleh Lewis Hamilton).', '2024-12-07'),
-('rYGN7cF8yBCOHleHR2xo', '2kjuuLmAbCPEXx6NvUfY', 'Ferrari F80', 'bubat', '1000', 'kendaraan', '5XuTYwgPJjPKjTPy8S7h.jpg', 'gWJf8pc2vqeynmKrP5Ea.png', 'nlJb21kmOb1VcDU3JUFF.jpg', '', '', 'Ferrari F80 adalah sebuah hypercar yang dirilis oleh pabrikan Italia ternama, Ferrari. Mobil ini hadir sebagai puncak dari inovasi dan teknologi yang dimiliki Ferrari, memadukan performa ekstrem dengan desain yang sangat aerodinamis.', '2024-12-07'),
-('Dwk1qMDmyfJk6Qy0E7vR', 'pvzRQ5VyBCi3IZ7zWoni', 'tes', 'bdg', '11', 'barang', '40nD44DYcXolxjdvw2dA.png', '', '', '', '', 'tes', '2024-12-16');
+INSERT INTO `product` (`id`, `user_id`, `product_name`, `address`, `price`, `type`, `image_01`, `image_02`, `image_03`, `image_04`, `image_05`, `description`, `date`, `click_count`) VALUES
+('CLHgmSORjF4FnMxRvuLc', '2kjuuLmAbCPEXx6NvUfY', 'W11', 'Bandung', '99999999', 'kendaraan', 'vOW8WUEdHbpSH1w2kQf9.jpg', 'hkpuf34R1hJDKCdqG1oA.jpg', 'v2B7onGlXfHSuo9DTioO.jpg', '', '', 'Mercedes-AMG F1 W11 EQ Performance adalah sebuah mobil balap Formula Satu yang didesain dan dibangun oleh tim Mercedes-AMG Petronas F1 untuk berkompetisi di musim balap Formula Satu 2020. Mobil ini dikenal sangat dominan di musim tersebut dan berhasil membawa tim Mercedes meraih gelar juara dunia konstruktor dan pembalap (diraih oleh Lewis Hamilton).', '2024-12-07', 8),
+('rYGN7cF8yBCOHleHR2xo', '2kjuuLmAbCPEXx6NvUfY', 'Ferrari F80', 'bubat', '1000', 'kendaraan', '5XuTYwgPJjPKjTPy8S7h.jpg', 'gWJf8pc2vqeynmKrP5Ea.png', 'nlJb21kmOb1VcDU3JUFF.jpg', '', '', 'Ferrari F80 adalah sebuah hypercar yang dirilis oleh pabrikan Italia ternama, Ferrari. Mobil ini hadir sebagai puncak dari inovasi dan teknologi yang dimiliki Ferrari, memadukan performa ekstrem dengan desain yang sangat aerodinamis.', '2024-12-07', 11),
+('Dwk1qMDmyfJk6Qy0E7vR', 'pvzRQ5VyBCi3IZ7zWoni', 'tes', 'bdg', '11', 'barang', '40nD44DYcXolxjdvw2dA.png', '', '', '', '', 'tes', '2024-12-16', 7);
 
 -- --------------------------------------------------------
 
@@ -104,7 +112,8 @@ CREATE TABLE `requests` (
 --
 
 INSERT INTO `requests` (`id`, `product_id`, `sender`, `receiver`, `date`) VALUES
-('9NmbXfG6twkk9Id2IpJd', 'CLHgmSORjF4FnMxRvuLc', '2kjuuLmAbCPEXx6NvUfY', '2kjuuLmAbCPEXx6NvUfY', '2024-12-16');
+('9NmbXfG6twkk9Id2IpJd', 'CLHgmSORjF4FnMxRvuLc', '2kjuuLmAbCPEXx6NvUfY', '2kjuuLmAbCPEXx6NvUfY', '2024-12-16'),
+('Yz0bSePbIAWV4ym8uh0D', 'Dwk1qMDmyfJk6Qy0E7vR', 'pvzRQ5VyBCi3IZ7zWoni', 'pvzRQ5VyBCi3IZ7zWoni', '2024-12-24');
 
 -- --------------------------------------------------------
 
