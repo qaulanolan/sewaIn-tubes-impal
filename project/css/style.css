@@ -42,11 +42,10 @@ html{
    scroll-behavior: smooth;
    scroll-padding-top: 10rem;
 }
-
 body{
    background-color: var(--light-bg);
-   /* display: flex; */
-   /* flex-direction: column; */
+   /* display: flex; 
+    flex-direction: column; */
    min-height: 100vh;
    margin: 0;
 }
@@ -297,6 +296,7 @@ section{
    color: var(--light-color);
    padding-top: .5rem;
 }
+
 
 .listings .box-container{
    display: grid;
@@ -1319,68 +1319,28 @@ section{
 
 
 
-.footer{
+.footer {
    background-color: var(--black);
+   color: var(--white);
+   padding: 2rem 0;
+   text-align: center;
+   position: relative;
    width: 100%;
-   /* position: fixed; */
-}
-
-.footer .flex{
-   /* display: flex;
-   flex-wrap: wrap; */
-   gap: 2rem;
-   justify-content: space;
-}
-
-.footer .flex .box{
-   flex: 1 1 30rem;
-}
-
-.footer .flex .box a{
+   clear: both;
+   margin-top: auto;
    display: block;
-   padding: 1rem 0;
-   font-size: 1.8rem;
 }
 
-.footer .flex .box a span{
+.footer .credit {
+   font-size: 1.6rem;
    color: var(--white);
+   padding: 1rem;
+   margin: 0 auto;
+   line-height: 1.5;
 }
 
-.footer .flex .box a:hover span{
-   text-decoration: underline;
-}
-
-.footer .flex .box a i{
-   color: var(--main-color);
-}
-
-.footer .flex .box:last-child{
-   text-align: right;
-}
-
-.footer .flex .box:last-child a i{
-   margin-left: 1.5rem;
-}
-
-.footer .flex .box:first-child a i{
-   margin-right: 1.5rem;
-}
-
-.footer .flex .box:nth-child(2){
-   text-align: center;
-}
-
-.footer .credit{
-   padding: 1rem .5rem;
-   text-align: center;
-   border-top: var(--border);
-   font-size: 2rem;
-   color: var(--white);
-   margin-top: 2rem;
-   /* padding-bottom: 10rem; */
-}
-
-.footer .credit span{
+.footer .credit span {
+   font-weight: bold;
    color: var(--main-color);
 }
 

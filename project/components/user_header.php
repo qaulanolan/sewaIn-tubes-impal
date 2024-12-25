@@ -49,9 +49,10 @@
             <li><a href="saved.php">saved <i class="far fa-heart"></i></a></li>
             <li><a href="#">account <i class="fas"></i></a>
                <ul>
+                  <?php if($user_id == '') { ?>
                   <li><a href="login.php">login</a></li>
                   <li><a href="register.php">register new</a></li>
-                  <?php if($user_id != ''){ ?>
+                  <?php }else{ ?>
                   <li><a href="update.php">update profile</a></li>
                   <li><a href="components/user_logout.php" onclick="return confirm('logout from this website?');">logout</a>
                   <?php } ?></li>
