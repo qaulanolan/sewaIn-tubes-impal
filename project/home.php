@@ -113,7 +113,7 @@ include 'components/save_send.php';
    <div class="box-container">
       <?php
          $total_images = 0;
-         $select_properties = $conn->prepare("SELECT * FROM `product` ORDER BY date DESC LIMIT 6");
+         $select_properties = $conn->prepare("SELECT * FROM `product` ORDER BY date DESC LIMIT 4");
          $select_properties->execute();
          if($select_properties->rowCount() > 0){
             while($fetch_product = $select_properties->fetch(PDO::FETCH_ASSOC)){
