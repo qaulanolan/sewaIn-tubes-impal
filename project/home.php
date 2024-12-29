@@ -37,7 +37,7 @@ include 'components/save_send.php';
 <section class="recommendation">
    <h1 class="heading">recommendation</h1>
 
-</sectionclas>
+</section>
 <!-- recommendation section ends -->
 
 <!-- services section starts  -->
@@ -171,7 +171,6 @@ include 'components/save_send.php';
    <div style="margin-top: 2rem; text-align:center;">
       <a href="listings.php" class="inline-btn">view all</a>
    </div>
-
 </section>
 
 <!-- listings section ends -->

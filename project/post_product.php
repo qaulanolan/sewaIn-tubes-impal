@@ -11,7 +11,6 @@ if(isset($_COOKIE['user_id'])){
 
 if(isset($_POST['post'])){
 
-   $id = create_unique_id();
    $product_name = $_POST['product_name'];
    $product_name = filter_var($product_name, FILTER_SANITIZE_STRING);
    $price = $_POST['price'];
@@ -106,8 +105,8 @@ if(isset($_POST['post'])){
    if($image_01_size > 2000000){
       $warning_msg[] = 'image 01 size too large!';
    }else{
-      $insert_product = $conn->prepare("INSERT INTO `product`(id, user_id, product_name, address, price, type, image_01, image_02, image_03, image_04, image_05, description) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)"); 
-      $insert_product->execute([$id, $user_id, $product_name, $address, $price, $type, $rename_image_01, $rename_image_02, $rename_image_03, $rename_image_04, $rename_image_05, $description]);
+      $insert_product = $conn->prepare("INSERT INTO `product`(user_id, product_name, address, price, type, image_01, image_02, image_03, image_04, image_05, description) VALUES(?,?,?,?,?,?,?,?,?,?,?)"); 
+      $insert_product->execute([$user_id, $product_name, $address, $price, $type, $rename_image_01, $rename_image_02, $rename_image_03, $rename_image_04, $rename_image_05, $description]);
       move_uploaded_file($image_01_tmp_name, $image_01_folder);
       $success_msg[] = 'product posted successfully!';
    }

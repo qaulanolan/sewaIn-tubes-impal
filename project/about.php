@@ -71,9 +71,11 @@ if(isset($_COOKIE['user_id'])){
       </div>
 
       <div class="box">
+         <a href="listings.php">
          <img src="images/step-3.png" alt="">
          <h3>gunakan produk</h3>
          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, placeat.</p>
+         </a>
       </div>
 
    </div>
