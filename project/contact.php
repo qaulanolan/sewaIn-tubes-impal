@@ -85,33 +85,51 @@ if(isset($_POST['send'])){
    <div class="box-container">
 
       <div class="box active">
-         <h3><span>how to cancel booking?</span><i class="fas fa-angle-down"></i></h3>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus veritatis ducimus aut accusantium sunt error esse laborum cumque ipsum ab.</p>
+         <h3><span>Apa itu SewaIn?</span><i class="fas fa-angle-down"></i></h3>
+         <p>SewaIn adalah platform berbasis web yang menyediakan layanan penyewaan produk dalam tiga kategori: barang, properti, dan kendaraan. Pengguna dapat menyewakan produk mereka kepada orang lain atau menyewa produk yang tersedia di platform ini dengan mudah.</p>
       </div>
 
       <div class="box active">
-         <h3><span>when will I get the possession?</span><i class="fas fa-angle-down"></i></h3>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus veritatis ducimus aut accusantium sunt error esse laborum cumque ipsum ab.</p>
+         <h3><span>Bagaimana cara mendaftar di SewaIn?</span><i class="fas fa-angle-down"></i></h3>
+         <p>Untuk mendaftar di SewaIn, Anda perlu:
+            <li>1. Klik tombol Sign Up di halaman utama.</li>
+            <li>2. Isi informasi pendaftaran, seperti nama, email, dan kata sandi.</li>
+            <li>3. Verifikasi akun melalui email yang dikirimkan.</li>
+            <li>4. Setelah verifikasi, Anda dapat masuk ke akun dan mulai menggunakan fitur SewaIn.</li>
+         </p>
       </div>
 
       <div class="box">
-         <h3><span>where can I pay the rent?</span><i class="fas fa-angle-down"></i></h3>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus veritatis ducimus aut accusantium sunt error esse laborum cumque ipsum ab.</p>
+         <h3><span>Bagaimana cara menyewakan produk di SewaIn?</span><i class="fas fa-angle-down"></i></h3>
+         <p>Untuk menyewakan produk Anda:
+            <li>1. Masuk ke akun SewaIn Anda.</li>
+            <li>2. Klik menu SewaIn Produk.</li>
+            <li>3. Isi informasi produk, seperti nama, harga, lokasi, kategori, deskripsi, dan tambahkan foto.</li>
+            <li>4. Setelah semua informasi lengkap, klik tombol Post Produk.</li>
+            <li>5. Produk Anda akan muncul di platform SewaIn dan siap disewa oleh pengguna lain.</li>
+         </p>
       </div>
 
       <div class="box">
-         <h3><span>how to contact with the buyers?</span><i class="fas fa-angle-down"></i></h3>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus veritatis ducimus aut accusantium sunt error esse laborum cumque ipsum ab.</p>
+         <h3><span>Bagaimana cara menyewa produk di SewaIn?</span><i class="fas fa-angle-down"></i></h3>
+         <p>Untuk menyewa produk:
+            <li>1. Cari produk yang Anda butuhkan menggunakan fitur filter search.</li>
+            <li>2. Klik 'Lihat Produk' untuk melihat detailnya.</li>
+            <li>3. Hubungi lessor dengan klik 'Hubungi Lessor' atau melalui nomor yang sudah tertera untuk mengatur proses penyewaan.</li>
+            <li>4. Diskusikan harga, durasi sewa, dan pengambilan atau pengiriman produk langsung dengan pemilik.</li>
+         </p>
       </div>
 
       <div class="box">
-         <h3><span>why my listing not showing up?</span><i class="fas fa-angle-down"></i></h3>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus veritatis ducimus aut accusantium sunt error esse laborum cumque ipsum ab.</p>
+         <h3><span>Apakah pembayaran dilakukan melalui platform SewaIn?</span><i class="fas fa-angle-down"></i></h3>
+         <p>Tidak, SewaIn tidak menyediakan layanan pembayaran langsung di platform. Semua pembayaran dan kesepakatan dilakukan secara langsung antara penyewa dan pemilik produk. Platform ini hanya memfasilitasi penyewaan melalui fitur pencarian dan komunikasi.</p>
       </div>
 
       <div class="box">
-         <h3><span>how to promote my listing?</span><i class="fas fa-angle-down"></i></h3>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus veritatis ducimus aut accusantium sunt error esse laborum cumque ipsum ab.</p>
+         <h3><span>Bagaimana cara menghubungi pemilik produk?</span><i class="fas fa-angle-down"></i></h3>
+         <p>Anda dapat menghubungi pemilik produk dengan klik 'Hubungi Lessor' atau melalui nomor pemilik yang tersedia di halaman detail produk. Fitur ini memungkinkan Anda untuk berdiskusi langsung dengan pemilik mengenai harga, durasi sewa, dan rincian lainnya.
+            Jika ada pertanyaan lain, silakan hubungi tim dukungan kami melalui halaman Contact Us!
+         </p>
       </div>
 
    </div>
