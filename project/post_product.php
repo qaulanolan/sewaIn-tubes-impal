@@ -22,6 +22,14 @@ if(isset($_POST['post'])){
    $description = $_POST['description'];
    $description = filter_var($description, FILTER_SANITIZE_STRING);
 
+   $category = $_POST['category'];
+   $category = filter_var($category, FILTER_SANITIZE_STRING);
+   $sub_category = $_POST['sub_category'];
+   $sub_category = filter_var($sub_category, FILTER_SANITIZE_STRING);
+   $specific_category = $_POST['specific_category'];
+   $specific_category = filter_var($specific_category, FILTER_SANITIZE_STRING);
+
+
    $image_02 = $_FILES['image_02']['name'];
    $image_02 = filter_var($image_02, FILTER_SANITIZE_STRING);
    $image_02_ext = pathinfo($image_02, PATHINFO_EXTENSION);
@@ -105,8 +113,8 @@ if(isset($_POST['post'])){
    if($image_01_size > 2000000){
       $warning_msg[] = 'image 01 size too large!';
    }else{
-      $insert_product = $conn->prepare("INSERT INTO `product`(user_id, product_name, address, price, type, image_01, image_02, image_03, image_04, image_05, description) VALUES(?,?,?,?,?,?,?,?,?,?,?)"); 
-      $insert_product->execute([$user_id, $product_name, $address, $price, $type, $rename_image_01, $rename_image_02, $rename_image_03, $rename_image_04, $rename_image_05, $description]);
+      $insert_product = $conn->prepare("INSERT INTO `product`(user_id, product_name, address, price, type,category, sub_category, specific_category, image_01, image_02, image_03, image_04, image_05, description) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)"); 
+      $insert_product->execute([$user_id, $product_name, $address, $price, $type,$category, $sub_category, $specific_category , $rename_image_01, $rename_image_02, $rename_image_03, $rename_image_04, $rename_image_05, $description]);
       move_uploaded_file($image_01_tmp_name, $image_01_folder);
       $success_msg[] = 'product posted successfully!';
    }
@@ -151,14 +159,42 @@ if(isset($_POST['post'])){
             <p>lokasi <span>*</span></p>
             <input type="text" name="address" required maxlength="100" placeholder="lokasi produkmu" class="input">
          </div>
+
+         <!-- --------------------- ISI FORM ------------------------- -->
+
          <div class="box">
             <p>kategori <span>*</span></p>
-            <select name="type" required class="input">
-               <option value="properti">properti</option>
+            <select name="type" id="type" required class="input" onchange="updateCategory()">
+               <option value="" disabled>Pilih kategori</option>
+               <option value="tempat">tempat</option>
                <option value="barang">barang</option>
                <option value="kendaraan">kendaraan</option>
             </select>
          </div>
+              
+         <div class="box">
+            <p>kategori <span>*</span></p>
+            <select name="category" id="category" required class="input" onchange="updateSubCategory()">
+               <option value="lainnya">lainnya</option>
+            </select>
+         </div>
+       
+         <div class="box">
+            <p>sub kategori <span>*</span></p>
+            <select name="sub_category" id="sub_category" required class="input" onchange="updateSpecificCategory()">
+            <option value="lainnya">lainnya</option>
+            </select>
+         </div>
+
+         <div class="box">
+            <p>kategori spesifik <span>*</span></p>
+            <select name="specific_category" id="specific_category" required class="input">
+            <option value="lainnya">lainnya</option>
+            </select>
+         </div>
+
+      <!-- --------------------- END FORM ------------------------- -->
+
       </div> 
       <div class="box">
          <p>description <span>*</span></p>
@@ -193,7 +229,97 @@ if(isset($_POST['post'])){
 </section>
 
 
+<script>
 
+function updateCategory() {
+   const type = document.getElementById("type").value;
+   const category = document.getElementById("category");
+
+   category.innerHTML = '<option value="" disabled>Pilih Kategori</option>';
+
+   const arr_category = {
+      tempat: ["Tempat Tinggal", "Tempat Acara", "Tempat Lainnya"],
+      barang: ["Elektronik", "Alat Rumah Tangga", "Alat Tidur dan Furnitur"],
+      kendaraan: ["Kendaraan roda dua", "Kendaraan roda empat", "Kendaraan konstruksi"]
+   };
+
+   arr_category[type].forEach(sub => {
+      const option = document.createElement("option");
+      option.value = sub.toLowerCase();
+      option.textContent = sub;
+      category.appendChild(option);
+   });
+}
+
+function updateSubCategory() {
+   const category = document.getElementById("category").value;
+   const sub_category = document.getElementById("sub_category");
+
+   // Clear existing options
+   sub_category.innerHTML = '<option value="" disabled>Pilih Sub Kategori</option>';
+
+   // Define sub-categories for each category
+   const arr_sub_category = {
+      "kendaraan roda dua": ["motor", "sepeda"],
+      "kendaraan roda empat": ["mobil"],
+      "kendaraan kontruksi": ["truk", "alat berat"], 
+      elektronik: ["laptop", "kamera", "drone", "sound system", "peralatan proyektor", "power bank", "webcam", "lainnya"],
+      "alat rumah tangga": ["peralatan dapur", "peralatan pembersih"],
+      "alat tidur dan furnitur": ["kasur inflable", "tempat tidur lipat", "set meja dan kursi portable", "kipas angin", "karpet", "lainnya"],
+      "tempat tinggal": ["kost", "rumah", "apartemen"],
+      "tempat acara": ["ruang pertemuan", "ruang seminar dan pelatihan", "tempat event dan pesta", "studio kreatif"],
+      "tempat lainnya": ["lahan parkir", "tempat outdoor", "gudang", "lainnya"]
+   };
+
+   arr_sub_category[category].forEach(sub => {
+      const option = document.createElement("option");
+      option.value = sub.toLowerCase();
+      option.textContent = sub;
+      sub_category.appendChild(option);
+   });
+}
+
+function updateSpecificCategory() {
+   const sub_category = document.getElementById("sub_category").value;
+   const specific_category = document.getElementById("specific_category");
+
+   // Clear existing options
+   specific_category.innerHTML = '<option value="" disabled>Pilih Kategori Spesifik</option>';
+
+   // Define sub-categories for each category
+   const arr_specific_category = {
+      motor: ["motor manual", "motor matic", "motor kopling", "motor listrik", "lainnya"],
+      sepeda: ["sepeda gunung", "sepeda listrik", "sepeda lipat", "sepeda fixie", "lainnya"],
+      mobil: ["suv", "listrik", "sport & convertible", "van & mpv", "lainnya"],
+      truk: ["pickup", "box", "flatbed", "dump", "crane", "lainnya"],
+      "alat berat": ["excavator", "bulldozer", "wheel loader", "forklift", "skid steer", "grader", "dumper", "lainnya"],
+      "peralatan dapur": ["blender", "mikser", "microwave", "lainnya"],
+      "peralatan pembersih": ["vacuum cleaner", "sapu", "alat pel", "lainnya"],
+      "kost": ["harian", "mingguan", "bulanan", "tahunan", "lainnya"],
+      "ruang pertemuan": ["ruang rapat kecil", "ruang konferensi"],
+      "ruang seminar dan pelatihan": ["ruang seminar","ruang pelatihan"],
+      "tempat event dan pesta": ["gedung pernikahan", "event hall", "kafe dan ruang makan untuk acara"],
+      "studio kreatif": ["studio musik", "studio foto/video","studio seni dan lukis", "lainnya"],
+      "lahan parkir" : ["parkir kendaraan kecil", "parkir kendaraan besar", "lainnya"],
+      "tempat outdoor" : ["lahan camping", "lapangan futsal", "lapangan tenis", "lapangan badminton", "lainnya"]
+   };
+
+
+   if (arr_specific_category[sub_category]) {
+      arr_specific_category[sub_category].forEach(sub => {
+         const option = document.createElement("option");
+         option.value = sub.toLowerCase();
+         option.textContent = sub;
+         specific_category.appendChild(option);
+      });
+   } else{
+      const option = document.createElement("option");
+      option.value = "";
+      option.textContent = "Tidak ada kategori spesifik";
+      specific_category.appendChild(option);
+   }
+}
+</script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>

@@ -70,7 +70,7 @@ if(isset($_POST['delete'])){
    ?>
    <div class="box">
       <p>nama : <span><?= $fetch_sender['name']; ?></span></p>
-      <p>telp : <a href="tel:<?= $fetch_sender['number']; ?>"><?= $fetch_sender['number']; ?></a></p>
+      <p>telp : <a href="https://wa.me/62<?= substr($fetch_sender['number'], 1); ?>"><?= $fetch_sender['number']; ?></a></p>
       <p>email : <a href="mailto:<?= $fetch_sender['email']; ?>"><?= $fetch_sender['email']; ?></a></p>
       <p>pesanan : <span><?= $fetch_product['product_name']; ?></span></p>
       <form action="" method="POST">

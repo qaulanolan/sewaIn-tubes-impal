@@ -84,7 +84,7 @@ include 'components/save_send.php';
       <div class="info">
          <p><i class="fas fa-rupiah-sign"></i><span><?= $fetch_product['price']; ?></span></p>
          <p><i class="fas fa-user"></i><span><?= $fetch_user['name']; ?></span></p>
-         <p><i class="fas fa-phone"></i><a href="tel:+62<?= $fetch_user['number']; ?>"><?= $fetch_user['number']; ?></a></p>
+         <p><i class="fas fa-phone"></i><a href="https://wa.me/62<?= substr($fetch_user['number'], 1); ?>"><?= $fetch_user['number']; ?></a></p>
          <p><i class="fas fa-layer-group"></i><span><?= $fetch_product['type']; ?></span></p>
          <!-- <p><i class="fas fa-layer-group"></i><span><?= $fetch_product['offer']; ?></span></p> -->
          <p><i class="fas fa-calendar"></i><span><?= $fetch_product['date']; ?></span></p>
