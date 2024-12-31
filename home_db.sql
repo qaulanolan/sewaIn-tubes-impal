@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2024 at 08:18 AM
+-- Generation Time: Dec 31, 2024 at 04:14 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -51,7 +51,7 @@ CREATE TABLE `messages` (
   `id` int(20) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `number` varchar(10) NOT NULL,
+  `number` varchar(13) NOT NULL,
   `message` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -60,7 +60,10 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `name`, `email`, `number`, `message`) VALUES
-(1, 'olan', 'asd@gmail.com', '12345', 'tes');
+(1, 'olan', 'asd@gmail.com', '12345', 'tes'),
+(3, '123', '123@gmail.com', '081251101511', '123'),
+(4, 'Vandika', 'vandikategar@gmail.com', '081251101511', 'aplikasi bagus ^_^'),
+(6, 'Vandika', 'vandikategar@gmail.com', '081251101511', 'Gila! aplikasinya bagus bangeett!!!');
 
 -- --------------------------------------------------------
 
@@ -96,7 +99,8 @@ INSERT INTO `product` (`id`, `user_id`, `product_name`, `address`, `price`, `typ
 (4, 1, 'Rumah posisi hook', 'Bandung', '2000000', 'tempat', 'tempat tinggal', 'rumah', '', 'p66Za7df9DQAglC60Yq0.webp', 'M63hyp1fhBB7ijvqe9kN.webp', '6r4KGJrwxrXfiWebAV8l.webp', '', '', 'rumah dengan perabotan lengkap', '2024-12-31', 3),
 (5, 1, 'Mobil sport', 'Bojongsoang', '1500000', 'kendaraan', 'kendaraan roda empat', 'mobil', 'lainnya', 'On2Xjgy96ncnFIgBUwwk.jpg', '0d8ydTKhQoZFJJvC0zlm.jpg', 'tmwshLn8Rnp77gZMeRyJ.png', '', '', 'Ferrari F80 adalah supercar edisi terbatas yang menggabungkan teknologi mutakhir dengan performa tinggi.', '2024-12-31', 2),
 (6, 1, 'iRobot Braava Jet 240', 'Bandung', '500000', 'barang', 'alat rumah tangga', 'peralatan pembersih', 'alat pel', '4Vu1e8pH3AszzvmDsCXG.webp', 'cBlQXujfhEG2JZwgLuDH.webp', '4dkCVVCU2LKbESbT5AmR.jpg', '', '', 'alat pel otomatis praktis', '2024-12-31', 3),
-(7, 1, 'Lahan parkir kendaraan kecil', 'Karawang', '1000000', 'tempat', 'tempat lainnya', 'lahan parkir', 'parkir kendaraan kecil', 'UnmB3t6Ggh249JXOaNIT.jpeg', 'BBhGecrwPPpkBPSqCC15.jpeg', 'zEjN5qSHqzmFr3BIsVUt.jpeg', '', '', 'lahan parkir luas', '2024-12-31', 2);
+(7, 1, 'Lahan parkir kendaraan kecil', 'Karawang', '1000000', 'tempat', 'tempat lainnya', 'lahan parkir', 'parkir kendaraan kecil', 'UnmB3t6Ggh249JXOaNIT.jpeg', 'BBhGecrwPPpkBPSqCC15.jpeg', 'zEjN5qSHqzmFr3BIsVUt.jpeg', '', '', 'lahan parkir luas', '2024-12-31', 6),
+(8, 2, 'Mio', 'Bandung', '123213', 'barang', 'alat rumah tangga', 'peralatan pembersih', 'sapu', 'Pqy7SGrOntVgx5pxCvI3.jpg', '', '', '', '', '123213', '2024-12-31', 2);
 
 -- --------------------------------------------------------
 
@@ -117,7 +121,8 @@ CREATE TABLE `requests` (
 --
 
 INSERT INTO `requests` (`id`, `product_id`, `sender`, `receiver`, `date`) VALUES
-(1, 4, 1, 1, '2024-12-31');
+(1, 4, 1, 1, '2024-12-31'),
+(2, 8, 2, 2, '2024-12-31');
 
 -- --------------------------------------------------------
 
@@ -151,7 +156,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `number`, `email`, `password`, `profile_pic`) VALUES
-(1, 'olan', '081394234964', 'olan@gmail.com', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', '6772fed327847_63a54bb9faf269ae273fd485f4a0d165.jpg');
+(1, 'olan', '081394234964', 'olan@gmail.com', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', '6772fed327847_63a54bb9faf269ae273fd485f4a0d165.jpg'),
+(2, '123', '123', '123@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL),
+(3, 'Vandika', '081251101511', 'vandikategar@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', NULL);
 
 --
 -- Indexes for dumped tables
@@ -207,19 +214,19 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `saved`
@@ -231,7 +238,7 @@ ALTER TABLE `saved`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
