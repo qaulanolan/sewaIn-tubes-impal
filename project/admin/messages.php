@@ -79,7 +79,7 @@ if(isset($_POST['delete'])){
    <div class="box">
       <p>name : <span><?= $fetch_messages['name']; ?></span></p>
       <p>email : <a href="mailto:<?= $fetch_messages['email']; ?>"><?= $fetch_messages['email']; ?></a></p>
-      <p>number : <a href="tel:<?= $fetch_messages['number']; ?>"><?= $fetch_messages['number']; ?></a></p>
+      <p>number : <a href="https://wa.me/62<?= substr($fetch_messages['number'],1); ?>"><?= $fetch_messages['number']; ?></a></p>
       <p>message : <span><?= $fetch_messages['message']; ?></span></p>
       <form action="" method="POST">
          <input type="hidden" name="delete_id" value="<?= $fetch_messages['id']; ?>">
