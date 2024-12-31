@@ -656,6 +656,7 @@ section{
    font-size: 2rem;
    color: var(--black);
    padding-bottom: 1.5rem;
+   padding-top: 1.5rem;
    border-bottom: var(--border);
 }
 
@@ -688,6 +689,15 @@ section{
    font-size: 1.6rem;
    color: var(--light-color);
    line-height: 2;
+}
+
+.view-product .details .description-category{
+   padding-top: .5rem;
+   margin: .5rem 0;
+   margin-top: .5rem;
+   font-size: 1.5rem;
+   color: var(--light-color);
+   line-height: 1.5;
 }
 
 .view-product .details .save{
@@ -902,7 +912,19 @@ section{
    display: none;
 }
 
+.faq .box-container .box li{
+   font-size: 1.6rem;
+   color: var(--light-color);
+   background-color: var(--white);
+   padding: 0rem 2rem;
+   line-height: 1.5;
+   display: none;
+}
+
 .faq .box-container .box.active p{
+   display: block;
+}
+.faq .box-container .box.active li{
    display: block;
 }
 
@@ -1435,9 +1457,9 @@ section{
    color: var(--main-color);
 }
 
-.footer .flex{
-   /* display: flex;
-   flex-wrap: wrap; */
+/* .footer .flex{
+   display: flex;
+   flex-wrap: wrap;
    gap: 2rem;
    justify-content: space;
 }
@@ -1478,7 +1500,7 @@ section{
 
 .footer .flex .box:nth-child(2){
    text-align: center;
-}
+} */
 
 /* .footer .credit{
    padding: 1rem .5rem;

@@ -88,11 +88,28 @@ include 'components/save_send.php';
       <div class="info">
          <p><i class="fas fa-rupiah-sign"></i><span><?= $fetch_product['price']; ?></span></p>
          <p><i class="fas fa-user"></i><span><?= $fetch_user['name']; ?></span></p>
-         <p><i class="fas fa-phone"></i><a href="tel:+62<?= $fetch_user['number']; ?>"><?= $fetch_user['number']; ?></a></p>
+         <p><i class="fas fa-phone"></i><a href="https://wa.me/62<?= substr($fetch_user['number'], 1); ?>"><?= $fetch_user['number']; ?></a></p>
          <p><i class="fas fa-layer-group"></i><span><?= $fetch_product['type']; ?></span></p>
-         <!-- <p><i class="fas fa-layer-group"></i><span><?= $fetch_product['offer']; ?></span></p> -->
          <p><i class="fas fa-calendar"></i><span><?= $fetch_product['date']; ?></span></p>
       </div>
+      <!-- <h2 class="title">category</h2> -->
+      <p class="description-category"><i class="fas fa-layer-group"></i> : <?= $fetch_product['category']; ?></p>
+      <?php 
+         if($fetch_product['type'] == 'kendaraan'){
+      ?>
+      <p class="description-category"><i class="fa-solid fa-car"></i> : <?= $fetch_product['sub_category']; ?></p>
+      <?php 
+         }else if($fetch_product['type'] == 'tempat'){
+      ?>
+      <p class="description-category"><i class="fas fa-home"></i> : <?= $fetch_product['sub_category']; ?></p>
+      <?php 
+         }else if($fetch_product['type'] == 'barang'){
+      ?>
+      <p class="description-category"><i class="fas fa-box"></i> : <?= $fetch_product['sub_category']; ?></p>
+      <?php
+         }
+      ?>
+      <p class="description-category"><i class="fas fa-list"></i> : <?= $fetch_product['specific_category']; ?></p>
       <h3 class="title">description</h3>
       <p class="description"><?= $fetch_product['description']; ?></p>
       <form action="" method="post" class="flex-btn">

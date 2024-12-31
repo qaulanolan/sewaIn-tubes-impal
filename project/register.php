@@ -10,7 +10,6 @@ if(isset($_COOKIE['user_id'])){
 
 if(isset($_POST['submit'])){
 
-   $id = create_unique_id();
    $name = $_POST['name'];
    $name = filter_var($name, FILTER_SANITIZE_STRING); 
    $number = $_POST['number'];
@@ -31,8 +30,8 @@ if(isset($_POST['submit'])){
       if($pass != $c_pass){
          $warning_msg[] = 'Password not matched!';
       }else{
-         $insert_user = $conn->prepare("INSERT INTO `users`(id, name, number, email, password) VALUES(?,?,?,?,?)");
-         $insert_user->execute([$id, $name, $number, $email, $c_pass]);
+         $insert_user = $conn->prepare("INSERT INTO `users`(name, number, email, password) VALUES(?,?,?,?,?)");
+         $insert_user->execute([$name, $number, $email, $c_pass]);
          
          if($insert_user){
             $verify_users = $conn->prepare("SELECT * FROM `users` WHERE email = ? AND password = ? LIMIT 1");

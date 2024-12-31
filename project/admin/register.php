@@ -11,7 +11,6 @@ if(isset($_COOKIE['admin_id'])){
 
 if(isset($_POST['submit'])){
 
-   $id = create_unique_id();
    $name = $_POST['name'];
    $name = filter_var($name, FILTER_SANITIZE_STRING); 
    $pass = sha1($_POST['pass']);
@@ -28,8 +27,8 @@ if(isset($_POST['submit'])){
       if($pass != $c_pass){
          $warning_msg[] = 'Password not matched!';
       }else{
-         $insert_admin = $conn->prepare("INSERT INTO `admins`(id, name, password) VALUES(?,?,?)");
-         $insert_admin->execute([$id, $name, $c_pass]);
+         $insert_admin = $conn->prepare("INSERT INTO `admins`(name, password) VALUES(?,?,?)");
+         $insert_admin->execute([$name, $c_pass]);
          $success_msg[] = 'Registered successfully!';
       }
    }

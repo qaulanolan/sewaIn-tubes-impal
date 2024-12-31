@@ -82,20 +82,20 @@ include 'components/save_send.php';
 
       <div class="box">
          <img src="images/icon-2.png" alt="">
-         <h3>sewa properti</h3>
-         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, incidunt.</p>
+         <h3>sewa tempat</h3>
+         <p>Temukan tempat untuk disewa, mulai dari rumah, apartemen, hingga ruang kantor sesuai kebutuhan Anda.</p>
       </div>
 
       <div class="box">
          <img src="images/icon-5.png" alt="">
          <h3>sewa barang</h3>
-         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, incidunt.</p>
+         <p>Menyewakan berbagai barang, mulai dari alat elektronik hingga perlengkapan rumah tangga.</p>
       </div>
 
       <div class="box">
          <img src="images/vehicle-2.png" alt="">
          <h3>sewa kendaraan</h3>
-         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, incidunt.</p>
+         <p>Nikmati perjalanan nyaman dengan pilihan kendaraan untuk disewa, mulai dari motor, mobil, hingga kendaraan besar.</p>
       </div>
 
    </div>
@@ -113,7 +113,7 @@ include 'components/save_send.php';
    <div class="box-container">
       <?php
          $total_images = 0;
-         $select_properties = $conn->prepare("SELECT * FROM `product` ORDER BY date DESC LIMIT 4");
+         $select_properties = $conn->prepare("SELECT * FROM `product` ORDER BY id DESC LIMIT 2");
          $select_properties->execute();
          if($select_properties->rowCount() > 0){
             while($fetch_product = $select_properties->fetch(PDO::FETCH_ASSOC)){

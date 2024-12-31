@@ -37,24 +37,21 @@ include 'components/save_send.php';
 
    <form action="" method="post">
       <div id="close-filter"><i class="fas fa-times"></i></div>
-      <h3>filter your search</h3>
+      <h3>Filter Pencarian</h3>
          
          <div class="flex">
             <div class="box">
-               <p>lokasi</p>
-               <input type="text" name="location" required maxlength="50" placeholder="lokasi anda" class="input">
+               <p>Nama Produk</p>
+               <input type="text" name="product_name" maxlength="100" placeholder="Nama produk yang ingin dicari" class="input">
             </div>
             <div class="box">
-               <p>kategori</p>
-               <select name="type" class="input" required>
-                  <option value="properti">properti</option>
-                  <option value="barang">barang</option>
-                  <option value="kendaraan">kendaraan</option>
-               </select>
+               <p>Lokasi</p>
+               <input type="text" name="location" maxlength="50" placeholder="Lokasi anda" class="input">
             </div>
             <div class="box">
-               <p>minimum budget</p>
-               <select name="min" class="input" required>
+               <p>Minimum Budget</p>
+               <select name="min" class="input">
+                  <option value="">Tidak Ada</option>
                   <option value="0">0</option>
                   <option value="50000">Rp 50.000</option>
                   <option value="100000">Rp 100.000</option>
@@ -64,8 +61,9 @@ include 'components/save_send.php';
                </select>
             </div>
             <div class="box">
-               <p>maximum budget</p>
-               <select name="max" class="input" required>
+               <p>Maximum Budget</p>
+               <select name="max" class="input">
+                  <option value="">Tidak Ada</option>
                   <option value="500000">Rp 500.000</option>
                   <option value="1000000">Rp 1.000.000</option>
                   <option value="5000000">Rp 5.000.000</option>
@@ -73,8 +71,17 @@ include 'components/save_send.php';
                   <option value="100000000">Rp 100.000.000</option>
                </select>
             </div>
+            <div class="box">
+               <p>Kategori</p>
+               <select name="type" class="input">
+                  <option value="">Semua</option>
+                  <option value="tempat">Tempat</option>
+                  <option value="barang">Barang</option>
+                  <option value="kendaraan">Kendaraan</option>
+               </select>
+            </div>
          </div>
-         <input type="submit" value="cari produk" name="filter_search" class="btn">
+         <input type="submit" value="Cari Produk" name="filter_search" class="btn">
    </form>
 
 </section>
@@ -84,40 +91,47 @@ include 'components/save_send.php';
 <div id="filter-btn" class="fas fa-filter"></div>
 
 <?php
+$query = "SELECT * FROM `product` WHERE 1=1";
+$params = [];
 
-if(isset($_POST['h_search'])){
+if(isset($_POST['filter_search'])){
+   if(!empty($_POST['product_name'])) {
+      $product_name = filter_var($_POST['product_name'], FILTER_SANITIZE_STRING);
+      $query .= " AND product_name LIKE ?";
+      $params[] = "%$product_name%";
+   }
 
-   $h_location = $_POST['h_location'];
-   $h_location = filter_var($h_location, FILTER_SANITIZE_STRING);
-   $h_type = $_POST['h_type'];
-   $h_type = filter_var($h_type, FILTER_SANITIZE_STRING);
-   $h_min = $_POST['h_min'];
-   $h_min = filter_var($h_min, FILTER_SANITIZE_STRING);
-   $h_max = $_POST['h_max'];
-   $h_max = filter_var($h_max, FILTER_SANITIZE_STRING);
+   if(!empty($_POST['location'])) {
+      $location = filter_var($_POST['location'], FILTER_SANITIZE_STRING);
+      $query .= " AND address LIKE ?";
+      $params[] = "%$location%";
+   }
 
-   $select_properties = $conn->prepare("SELECT * FROM `product` WHERE address LIKE '%{$h_location}%' AND type LIKE '%{$h_type}%' AND price BETWEEN $h_min AND $h_max ORDER BY date DESC");
-   $select_properties->execute();
+   if(!empty($_POST['type'])) {
+      $type = filter_var($_POST['type'], FILTER_SANITIZE_STRING);
+      $query .= " AND type = ?";
+      $params[] = $type;
+   }
 
-}elseif(isset($_POST['filter_search'])){
+   if(!empty($_POST['min'])) {
+      $min = filter_var($_POST['min'], FILTER_SANITIZE_STRING);
+      $query .= " AND price >= ?";
+      $params[] = $min;
+   }
 
-   $location = $_POST['location'];
-   $location = filter_var($location, FILTER_SANITIZE_STRING);
-   $type = $_POST['type'];
-   $type = filter_var($type, FILTER_SANITIZE_STRING);
-   $min = $_POST['min'];
-   $min = filter_var($min, FILTER_SANITIZE_STRING);
-   $max = $_POST['max'];
-   $max = filter_var($max, FILTER_SANITIZE_STRING);
+   if(!empty($_POST['max'])) {
+      $max = filter_var($_POST['max'], FILTER_SANITIZE_STRING);
+      $query .= " AND price <= ?";
+      $params[] = $max;
+   }
 
-   $select_properties = $conn->prepare("SELECT * FROM `product` WHERE address LIKE '%{$location}%' AND type LIKE '%{$type}%' AND price BETWEEN $min AND $max ORDER BY date DESC");
-   $select_properties->execute();
-
-}else{
-   $select_properties = $conn->prepare("SELECT * FROM `product` ORDER BY date DESC LIMIT 6");
-   $select_properties->execute();
+   $query .= " ORDER BY date DESC";
+} else {
+   $query .= " ORDER BY date DESC LIMIT 6";
 }
 
+$select_properties = $conn->prepare($query);
+$select_properties->execute($params);
 ?>
 
 <!-- listings section starts  -->
@@ -125,65 +139,38 @@ if(isset($_POST['h_search'])){
 <section class="listings">
 
    <?php 
-      if(isset($_POST['h_search']) or isset($_POST['filter_search'])){
-         echo '<h1 class="heading">search results</h1>';
+      if(isset($_POST['filter_search'])){
+         echo '<h1 class="heading">Hasil Pencarian</h1>';
       }else{
-         echo '<h1 class="heading">latest listings</h1>';
+         echo '<h1 class="heading">Listing Terbaru</h1>';
       }
    ?>
 
    <div class="box-container">
       <?php
-         $total_images = 0;
          if($select_properties->rowCount() > 0){
             while($fetch_product = $select_properties->fetch(PDO::FETCH_ASSOC)){
-            $select_user = $conn->prepare("SELECT * FROM `users` WHERE id = ?");
-            $select_user->execute([$fetch_product['user_id']]);
-            $fetch_user = $select_user->fetch(PDO::FETCH_ASSOC);
-
-            if(!empty($fetch_product['image_02'])){
-               $image_coutn_02 = 1;
-            }else{
-               $image_coutn_02 = 0;
-            }
-            if(!empty($fetch_product['image_03'])){
-               $image_coutn_03 = 1;
-            }else{
-               $image_coutn_03 = 0;
-            }
-            if(!empty($fetch_product['image_04'])){
-               $image_coutn_04 = 1;
-            }else{
-               $image_coutn_04 = 0;
-            }
-            if(!empty($fetch_product['image_05'])){
-               $image_coutn_05 = 1;
-            }else{
-               $image_coutn_05 = 0;
-            }
-
-            $total_images = (1 + $image_coutn_02 + $image_coutn_03 + $image_coutn_04 + $image_coutn_05);
-
-            $select_saved = $conn->prepare("SELECT * FROM `saved` WHERE product_id = ? and user_id = ?");
-            $select_saved->execute([$fetch_product['id'], $user_id]);
-
+               $select_user = $conn->prepare("SELECT * FROM `users` WHERE id = ?");
+               $select_user->execute([$fetch_product['user_id']]);
+               $fetch_user = $select_user->fetch(PDO::FETCH_ASSOC);
       ?>
       <form action="" method="POST">
          <div class="box">
             <input type="hidden" name="product_id" value="<?= $fetch_product['id']; ?>">
             <?php
+               $select_saved = $conn->prepare("SELECT * FROM `saved` WHERE product_id = ? and user_id = ?");
+               $select_saved->execute([$fetch_product['id'], $user_id]);
                if($select_saved->rowCount() > 0){
             ?>
             <button type="submit" name="save" class="save"><i class="fas fa-heart"></i><span>saved</span></button>
             <?php
-               }else{ 
+               }else{
             ?>
             <button type="submit" name="save" class="save"><i class="far fa-heart"></i><span>save</span></button>
             <?php
                }
             ?>
             <div class="thumb">
-               <p class="total-images"><i class="far fa-image"></i><span><?= $total_images; ?></span></p> 
                <img src="uploaded_files/<?= $fetch_product['image_01']; ?>" alt="">
             </div>
             <div class="admin">
@@ -202,19 +189,18 @@ if(isset($_POST['h_search'])){
                <p><i class="fas fa-layer-group"></i><span><?= $fetch_product['type']; ?></span></p>
             </div>
             <div class="flex-btn">
-               <a href="view_product.php?get_id=<?= $fetch_product['id']; ?>" class="btn">lihat produk</a>
-               <a href="tel:1234567890"<?= $fetch_user['number']; ?> class="btn">hubungi lessor</a>
-               <input type="submit" value="pesan" name="send" class="btn">
+               <a href="view_product.php?get_id=<?= $fetch_product['id']; ?>" class="btn">Lihat Produk</a>
+               <a href="tel:<?= $fetch_user['number']; ?>" class="btn">Hubungi Lessor</a>
+               <input type="submit" value="Pesan" name="send" class="btn">
             </div>
          </div>
       </form>
       <?php
          }
       }else{
-         echo '<p class="empty">no results found!</p>';
+         echo '<p class="empty">Tidak ada hasil ditemukan!</p>';
       }
       ?>
-      
    </div>
 
 </section>

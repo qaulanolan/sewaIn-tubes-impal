@@ -39,8 +39,8 @@ if(isset($_COOKIE['user_id'])){
       </div>
       <div class="content">
          <h3>why choose us?</h3>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum dolorem provident voluptatum distinctio laborum veritatis vitae suscipit praesentium fugiat unde?</p>
-         <a href="contact.html" class="inline-btn">contact us</a>
+         <p>Kami adalah platform penyewaan terpercaya yang menyediakan layanan sewa properti, barang, dan kendaraan untuk memenuhi berbagai kebutuhan Kamu.</p>
+         <a href="contact.php" class="inline-btn">contact us</a>
       </div>
    </div>
 
@@ -60,20 +60,22 @@ if(isset($_COOKIE['user_id'])){
          <a href="search.php">
          <img src="images/step-1.png" alt="">
          <h3>cari produk</h3>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, placeat.</p>
+         <p>Jelajahi berbagai pilihan produk, tempat, atau kendaraan yang tersedia sesuai kebutuhan Kamu.</p>
          </a>
       </div>
 
       <div class="box">
          <img src="images/step-2.png" alt="">
          <h3>hubungi lessor</h3>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, placeat.</p>
+         <p>Hubungi penyedia/lessor secara langsung untuk berdiskusi, menanyakan detail, atau melakukan negosiasi harga.</p>
       </div>
 
       <div class="box">
+         <a href="listings.php">
          <img src="images/step-3.png" alt="">
          <h3>gunakan produk</h3>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, placeat.</p>
+         <p>Setelah kesepakatan tercapai, nikmati layanan atau produk yang Kamu sewa dengan mudah dan nyaman.</p>
+         </a>
       </div>
 
    </div>

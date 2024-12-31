@@ -26,83 +26,83 @@ if(isset($_POST['update'])){
    $price = filter_var($price, FILTER_SANITIZE_STRING);
    $address = $_POST['address'];
    $address = filter_var($address, FILTER_SANITIZE_STRING);
-   $type = $_POST['type'];
-   $type = filter_var($type, FILTER_SANITIZE_STRING);
+   // $type = $_POST['type'];
+   // $type = filter_var($type, FILTER_SANITIZE_STRING);
    $description = $_POST['description'];
    $description = filter_var($description, FILTER_SANITIZE_STRING);
 
-   if(isset($_POST['lift'])){
-      $lift = $_POST['lift'];
-      $lift = filter_var($lift, FILTER_SANITIZE_STRING);
-   }else{
-      $lift = 'no';
-   }
-   if(isset($_POST['security_guard'])){
-      $security_guard = $_POST['security_guard'];
-      $security_guard = filter_var($security_guard, FILTER_SANITIZE_STRING);
-   }else{
-      $security_guard = 'no';
-   }
-   if(isset($_POST['play_ground'])){
-      $play_ground = $_POST['play_ground'];
-      $play_ground = filter_var($play_ground, FILTER_SANITIZE_STRING);
-   }else{
-      $play_ground = 'no';
-   }
-   if(isset($_POST['garden'])){
-      $garden = $_POST['garden'];
-      $garden = filter_var($garden, FILTER_SANITIZE_STRING);
-   }else{
-      $garden = 'no';
-   }
-   if(isset($_POST['water_supply'])){
-      $water_supply = $_POST['water_supply'];
-      $water_supply = filter_var($water_supply, FILTER_SANITIZE_STRING);
-   }else{
-      $water_supply = 'no';
-   }
-   if(isset($_POST['power_backup'])){
-      $power_backup = $_POST['power_backup'];
-      $power_backup = filter_var($power_backup, FILTER_SANITIZE_STRING);
-   }else{
-      $power_backup = 'no';
-   }
-   if(isset($_POST['parking_area'])){
-      $parking_area = $_POST['parking_area'];
-      $parking_area = filter_var($parking_area, FILTER_SANITIZE_STRING);
-   }else{
-      $parking_area = 'no';
-   }
-   if(isset($_POST['gym'])){
-      $gym = $_POST['gym'];
-      $gym = filter_var($gym, FILTER_SANITIZE_STRING);
-   }else{
-      $gym = 'no';
-   }
-   if(isset($_POST['shopping_mall'])){
-      $shopping_mall = $_POST['shopping_mall'];
-      $shopping_mall = filter_var($shopping_mall, FILTER_SANITIZE_STRING);
-   }else{
-      $shopping_mall = 'no';
-   }
-   if(isset($_POST['hospital'])){
-      $hospital = $_POST['hospital'];
-      $hospital = filter_var($hospital, FILTER_SANITIZE_STRING);
-   }else{
-      $hospital = 'no';
-   }
-   if(isset($_POST['school'])){
-      $school = $_POST['school'];
-      $school = filter_var($school, FILTER_SANITIZE_STRING);
-   }else{
-      $school = 'no';
-   }
-   if(isset($_POST['market_area'])){
-      $market_area = $_POST['market_area'];
-      $market_area = filter_var($market_area, FILTER_SANITIZE_STRING);
-   }else{
-      $market_area = 'no';
-   }
+   // if(isset($_POST['lift'])){
+   //    $lift = $_POST['lift'];
+   //    $lift = filter_var($lift, FILTER_SANITIZE_STRING);
+   // }else{
+   //    $lift = 'no';
+   // }
+   // if(isset($_POST['security_guard'])){
+   //    $security_guard = $_POST['security_guard'];
+   //    $security_guard = filter_var($security_guard, FILTER_SANITIZE_STRING);
+   // }else{
+   //    $security_guard = 'no';
+   // }
+   // if(isset($_POST['play_ground'])){
+   //    $play_ground = $_POST['play_ground'];
+   //    $play_ground = filter_var($play_ground, FILTER_SANITIZE_STRING);
+   // }else{
+   //    $play_ground = 'no';
+   // }
+   // if(isset($_POST['garden'])){
+   //    $garden = $_POST['garden'];
+   //    $garden = filter_var($garden, FILTER_SANITIZE_STRING);
+   // }else{
+   //    $garden = 'no';
+   // }
+   // if(isset($_POST['water_supply'])){
+   //    $water_supply = $_POST['water_supply'];
+   //    $water_supply = filter_var($water_supply, FILTER_SANITIZE_STRING);
+   // }else{
+   //    $water_supply = 'no';
+   // }
+   // if(isset($_POST['power_backup'])){
+   //    $power_backup = $_POST['power_backup'];
+   //    $power_backup = filter_var($power_backup, FILTER_SANITIZE_STRING);
+   // }else{
+   //    $power_backup = 'no';
+   // }
+   // if(isset($_POST['parking_area'])){
+   //    $parking_area = $_POST['parking_area'];
+   //    $parking_area = filter_var($parking_area, FILTER_SANITIZE_STRING);
+   // }else{
+   //    $parking_area = 'no';
+   // }
+   // if(isset($_POST['gym'])){
+   //    $gym = $_POST['gym'];
+   //    $gym = filter_var($gym, FILTER_SANITIZE_STRING);
+   // }else{
+   //    $gym = 'no';
+   // }
+   // if(isset($_POST['shopping_mall'])){
+   //    $shopping_mall = $_POST['shopping_mall'];
+   //    $shopping_mall = filter_var($shopping_mall, FILTER_SANITIZE_STRING);
+   // }else{
+   //    $shopping_mall = 'no';
+   // }
+   // if(isset($_POST['hospital'])){
+   //    $hospital = $_POST['hospital'];
+   //    $hospital = filter_var($hospital, FILTER_SANITIZE_STRING);
+   // }else{
+   //    $hospital = 'no';
+   // }
+   // if(isset($_POST['school'])){
+   //    $school = $_POST['school'];
+   //    $school = filter_var($school, FILTER_SANITIZE_STRING);
+   // }else{
+   //    $school = 'no';
+   // }
+   // if(isset($_POST['market_area'])){
+   //    $market_area = $_POST['market_area'];
+   //    $market_area = filter_var($market_area, FILTER_SANITIZE_STRING);
+   // }else{
+   //    $market_area = 'no';
+   // }
 
    $old_image_01 = $_POST['old_image_01'];
    $old_image_01 = filter_var($old_image_01, FILTER_SANITIZE_STRING);
@@ -219,8 +219,8 @@ if(isset($_POST['update'])){
       }
    }
 
-   $update_listing = $conn->prepare("UPDATE `product` SET product_name = ?, address = ?, price = ?, type = ?,description = ? WHERE id = ?");   
-   $update_listing->execute([$product_name, $address, $price, $type, $description, $update_id]);
+   $update_listing = $conn->prepare("UPDATE `product` SET product_name = ?, address = ?, price = ?,description = ? WHERE id = ?");   
+   $update_listing->execute([$product_name, $address, $price, $description, $update_id]);
 
    $success_msg[] = 'listing updated successfully!';
 
@@ -315,21 +315,21 @@ if(isset($_POST['delete_image_05'])){
       <input type="hidden" name="old_image_03" value="<?= $fetch_product['image_03']; ?>">
       <input type="hidden" name="old_image_04" value="<?= $fetch_product['image_04']; ?>">
       <input type="hidden" name="old_image_05" value="<?= $fetch_product['image_05']; ?>">
-      <h3>product details</h3>
+      <h3>detail produk</h3>
       <div class="box">
-         <p>product name <span>*</span></p>
-         <input type="text" name="product_name" required maxlength="50" placeholder="enter product name" value="<?= $fetch_product['product_name']; ?>" class="input">
+         <p>nama produk <span>*</span></p>
+         <input type="text" name="product_name" required maxlength="50" placeholder="ubah nama produk" value="<?= $fetch_product['product_name']; ?>" class="input">
       </div>
       <div class="flex">
          <div class="box">
-            <p>product price <span>*</span></p>
-            <input type="number" name="price" required min="0" max="9999999999" maxlength="10" value="<?= $fetch_product['price']; ?>" placeholder="enter product price" class="input">
+            <p>harga produk <span>*</span></p>
+            <input type="number" name="price" required min="0" max="9999999999" maxlength="10" value="<?= $fetch_product['price']; ?>" placeholder="ubah harga produk" class="input">
          </div>
          <div class="box">
-            <p>product address <span>*</span></p>
-            <input type="text" name="address" required maxlength="100" placeholder="enter product full address" class="input" value="<?= $fetch_product['address']; ?>">
+            <p>lokasi <span>*</span></p>
+            <input type="text" name="address" required maxlength="100" placeholder="lokasi produk terbaru" class="input" value="<?= $fetch_product['address']; ?>">
          </div>
-         <div class="box">
+         <!-- <div class="box">
             <p>product type <span>*</span></p>
             <select name="type" required class="input">
                <option value="<?= $fetch_product['type']; ?>" selected><?= $fetch_product['type']; ?></option>
@@ -337,11 +337,11 @@ if(isset($_POST['delete_image_05'])){
                <option value="barang">barang</option>
                <option value="kendaraan">kendaraan</option>
             </select>
-         </div>
+         </div> -->
       </div>
       <div class="box">
-         <p>product description <span>*</span></p>
-         <textarea name="description" maxlength="1000" class="input" required cols="30" rows="10" placeholder="write about product..." ><?= $fetch_product['description']; ?></textarea>
+         <p>description <span>*</span></p>
+         <textarea name="description" maxlength="1000" class="input" required cols="30" rows="10" placeholder="ubah deskripsi produk" ><?= $fetch_product['description']; ?></textarea>
       </div>
       <div class="box">
          <img src="uploaded_files/<?= $fetch_product['image_01']; ?>" class="image" alt="">
