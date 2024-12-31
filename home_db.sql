@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2024 at 09:37 AM
+-- Generation Time: Dec 31, 2024 at 08:18 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admins` (
-  `id` varchar(20) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(20) NOT NULL,
   `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -38,7 +38,8 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `password`) VALUES
-('BcjKNX58e4x7bIqIvxG7', 'admin', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2');
+(3, 'admin', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2'),
+(4, 'Vandika', '40bd001563085fc35165329ea1ff5c5ecbdbbeef');
 
 -- --------------------------------------------------------
 
@@ -47,7 +48,7 @@ INSERT INTO `admins` (`id`, `name`, `password`) VALUES
 --
 
 CREATE TABLE `messages` (
-  `id` varchar(20) NOT NULL,
+  `id` int(20) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `number` varchar(10) NOT NULL,
@@ -59,7 +60,7 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `name`, `email`, `number`, `message`) VALUES
-('4FdYsSYWfZdvV8nqlJKI', 'olan', 'olan@gmail.com', '8139423496', 'tes pesan');
+(1, 'olan', 'asd@gmail.com', '12345', 'tes');
 
 -- --------------------------------------------------------
 
@@ -68,12 +69,15 @@ INSERT INTO `messages` (`id`, `name`, `email`, `number`, `message`) VALUES
 --
 
 CREATE TABLE `product` (
-  `id` varchar(20) NOT NULL,
-  `user_id` varchar(20) NOT NULL,
+  `id` int(20) NOT NULL,
+  `user_id` int(20) NOT NULL,
   `product_name` varchar(50) NOT NULL,
   `address` varchar(300) NOT NULL,
   `price` varchar(10) NOT NULL,
   `type` varchar(10) NOT NULL,
+  `category` varchar(50) NOT NULL,
+  `sub_category` varchar(50) NOT NULL,
+  `specific_category` varchar(50) NOT NULL,
   `image_01` varchar(50) NOT NULL,
   `image_02` varchar(50) NOT NULL,
   `image_03` varchar(50) NOT NULL,
@@ -88,10 +92,11 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `user_id`, `product_name`, `address`, `price`, `type`, `image_01`, `image_02`, `image_03`, `image_04`, `image_05`, `description`, `date`, `click_count`) VALUES
-('CLHgmSORjF4FnMxRvuLc', '2kjuuLmAbCPEXx6NvUfY', 'W11', 'Bandung', '99999999', 'kendaraan', 'vOW8WUEdHbpSH1w2kQf9.jpg', 'hkpuf34R1hJDKCdqG1oA.jpg', 'v2B7onGlXfHSuo9DTioO.jpg', '', '', 'Mercedes-AMG F1 W11 EQ Performance adalah sebuah mobil balap Formula Satu yang didesain dan dibangun oleh tim Mercedes-AMG Petronas F1 untuk berkompetisi di musim balap Formula Satu 2020. Mobil ini dikenal sangat dominan di musim tersebut dan berhasil membawa tim Mercedes meraih gelar juara dunia konstruktor dan pembalap (diraih oleh Lewis Hamilton).', '2024-12-07', 8),
-('rYGN7cF8yBCOHleHR2xo', '2kjuuLmAbCPEXx6NvUfY', 'Ferrari F80', 'bubat', '1000', 'kendaraan', '5XuTYwgPJjPKjTPy8S7h.jpg', 'gWJf8pc2vqeynmKrP5Ea.png', 'nlJb21kmOb1VcDU3JUFF.jpg', '', '', 'Ferrari F80 adalah sebuah hypercar yang dirilis oleh pabrikan Italia ternama, Ferrari. Mobil ini hadir sebagai puncak dari inovasi dan teknologi yang dimiliki Ferrari, memadukan performa ekstrem dengan desain yang sangat aerodinamis.', '2024-12-07', 11),
-('Dwk1qMDmyfJk6Qy0E7vR', 'pvzRQ5VyBCi3IZ7zWoni', 'tes', 'bdg', '11', 'barang', '40nD44DYcXolxjdvw2dA.png', '', '', '', '', 'tes', '2024-12-16', 7);
+INSERT INTO `product` (`id`, `user_id`, `product_name`, `address`, `price`, `type`, `category`, `sub_category`, `specific_category`, `image_01`, `image_02`, `image_03`, `image_04`, `image_05`, `description`, `date`, `click_count`) VALUES
+(4, 1, 'Rumah posisi hook', 'Bandung', '2000000', 'tempat', 'tempat tinggal', 'rumah', '', 'p66Za7df9DQAglC60Yq0.webp', 'M63hyp1fhBB7ijvqe9kN.webp', '6r4KGJrwxrXfiWebAV8l.webp', '', '', 'rumah dengan perabotan lengkap', '2024-12-31', 3),
+(5, 1, 'Mobil sport', 'Bojongsoang', '1500000', 'kendaraan', 'kendaraan roda empat', 'mobil', 'lainnya', 'On2Xjgy96ncnFIgBUwwk.jpg', '0d8ydTKhQoZFJJvC0zlm.jpg', 'tmwshLn8Rnp77gZMeRyJ.png', '', '', 'Ferrari F80 adalah supercar edisi terbatas yang menggabungkan teknologi mutakhir dengan performa tinggi.', '2024-12-31', 2),
+(6, 1, 'iRobot Braava Jet 240', 'Bandung', '500000', 'barang', 'alat rumah tangga', 'peralatan pembersih', 'alat pel', '4Vu1e8pH3AszzvmDsCXG.webp', 'cBlQXujfhEG2JZwgLuDH.webp', '4dkCVVCU2LKbESbT5AmR.jpg', '', '', 'alat pel otomatis praktis', '2024-12-31', 3),
+(7, 1, 'Lahan parkir kendaraan kecil', 'Karawang', '1000000', 'tempat', 'tempat lainnya', 'lahan parkir', 'parkir kendaraan kecil', 'UnmB3t6Ggh249JXOaNIT.jpeg', 'BBhGecrwPPpkBPSqCC15.jpeg', 'zEjN5qSHqzmFr3BIsVUt.jpeg', '', '', 'lahan parkir luas', '2024-12-31', 2);
 
 -- --------------------------------------------------------
 
@@ -100,10 +105,10 @@ INSERT INTO `product` (`id`, `user_id`, `product_name`, `address`, `price`, `typ
 --
 
 CREATE TABLE `requests` (
-  `id` varchar(20) NOT NULL,
-  `product_id` varchar(20) NOT NULL,
-  `sender` varchar(20) NOT NULL,
-  `receiver` varchar(20) NOT NULL,
+  `id` int(20) NOT NULL,
+  `product_id` int(20) NOT NULL,
+  `sender` int(20) NOT NULL,
+  `receiver` int(20) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -112,8 +117,7 @@ CREATE TABLE `requests` (
 --
 
 INSERT INTO `requests` (`id`, `product_id`, `sender`, `receiver`, `date`) VALUES
-('9NmbXfG6twkk9Id2IpJd', 'CLHgmSORjF4FnMxRvuLc', '2kjuuLmAbCPEXx6NvUfY', '2kjuuLmAbCPEXx6NvUfY', '2024-12-16'),
-('Yz0bSePbIAWV4ym8uh0D', 'Dwk1qMDmyfJk6Qy0E7vR', 'pvzRQ5VyBCi3IZ7zWoni', 'pvzRQ5VyBCi3IZ7zWoni', '2024-12-24');
+(1, 4, 1, 1, '2024-12-31');
 
 -- --------------------------------------------------------
 
@@ -122,9 +126,9 @@ INSERT INTO `requests` (`id`, `product_id`, `sender`, `receiver`, `date`) VALUES
 --
 
 CREATE TABLE `saved` (
-  `id` varchar(20) NOT NULL,
-  `product_id` varchar(20) NOT NULL,
-  `user_id` varchar(20) NOT NULL
+  `id` int(20) NOT NULL,
+  `product_id` int(20) NOT NULL,
+  `user_id` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -134,7 +138,7 @@ CREATE TABLE `saved` (
 --
 
 CREATE TABLE `users` (
-  `id` varchar(20) NOT NULL,
+  `id` int(20) NOT NULL,
   `name` varchar(50) NOT NULL,
   `number` varchar(13) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -147,8 +151,87 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `number`, `email`, `password`, `profile_pic`) VALUES
-('2kjuuLmAbCPEXx6NvUfY', 'a', '123', 'a@gmail.com', 'f10e2821bbbea527ea02200352313bc059445190', '6753f6737b571_me.png'),
-('pvzRQ5VyBCi3IZ7zWoni', 'olan', '81394234964', 'olan2@gmail.com', 'f10e2821bbbea527ea02200352313bc059445190', NULL);
+(1, 'olan', '081394234964', 'olan@gmail.com', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', '6772fed327847_63a54bb9faf269ae273fd485f4a0d165.jpg');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `requests`
+--
+ALTER TABLE `requests`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `saved`
+--
+ALTER TABLE `saved`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `requests`
+--
+ALTER TABLE `requests`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `saved`
+--
+ALTER TABLE `saved`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
