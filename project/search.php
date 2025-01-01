@@ -37,7 +37,10 @@ include 'components/save_send.php';
 
    <form action="" method="post">
       <div id="close-filter"><i class="fas fa-times"></i></div>
-      <h3>Filter Pencarian</h3>
+      <h3 style="display: flex; justify-content: space-between; align-items: center;">
+         Filter Pencarian
+         <a href="searching_image.php" class="btn">Pencarian Gambar</a>
+      </h3>
          
          <div class="flex">
             <div class="box">
@@ -207,27 +210,16 @@ $select_properties->execute($params);
 
 <!-- listings section ends -->
 
-
-
-
-
-
-
-
-
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
 <?php include 'components/footer.php'; ?>
 
-<!-- custom js file link  -->
+<!-- custom js file link -->
 <script src="js/script.js"></script>
 
 <?php include 'components/message.php'; ?>
 
 <script>
-
 document.querySelector('#filter-btn').onclick = () =>{
    document.querySelector('.filters').classList.add('active');
 }
@@ -235,7 +227,6 @@ document.querySelector('#filter-btn').onclick = () =>{
 document.querySelector('#close-filter').onclick = () =>{
    document.querySelector('.filters').classList.remove('active');
 }
-
 </script>
 
 </body>

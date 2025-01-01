@@ -1,0 +1,42 @@
+{
+    "categories": [
+        {
+            "name": "abstract_shape",
+            "score": 0.3984375
+        },
+        {
+            "name": "others_",
+            "score": 0.1171875
+        },
+        {
+            "name": "outdoor_",
+            "score": 0.00390625
+        }
+    ],
+    "tags": [
+        {
+            "name": "appliance",
+            "confidence": 0.9991112947463989
+        },
+        {
+            "name": "vacuum",
+            "confidence": 0.997169017791748
+        },
+        {
+            "name": "vacuum cleaner",
+            "confidence": 0.9025256633758545
+        },
+        {
+            "name": "home appliance",
+            "confidence": 0.858916699886322
+        }
+    ],
+    "objects": [],
+    "requestId": "01df7bc0-c761-4688-9a8b-c0d0fc579f27",
+    "metadata": {
+        "height": 225,
+        "width": 225,
+        "format": "Jpeg"
+    },
+    "modelVersion": "2021-05-01"
+}
