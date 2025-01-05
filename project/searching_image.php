@@ -8,6 +8,8 @@ if (isset($_COOKIE['user_id'])) {
     $user_id = '';
 }
 
+include 'components/save_send.php';
+
 require 'vendor/autoload.php';
 use GuzzleHttp\Client;
 
@@ -97,38 +99,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['image'])) {
                 echo '<p>Error: ' . $e->getMessage() . '</p>';
             }
         }
-    }
-}
-
-if (isset($_POST['send'])) {
-    $product_id = $_POST['product_id'];
-
-    // Check if the orders table exists
-    $table_check = $conn->prepare("SHOW TABLES LIKE 'orders'");
-    $table_check->execute();
-
-    if ($table_check->rowCount() === 0) {
-        // Create the orders table if it doesn't exist
-        $create_table = "CREATE TABLE orders (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            user_id INT NOT NULL,
-            product_id INT NOT NULL,
-            order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-            FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE
-        )";
-        $conn->exec($create_table);
-    }
-
-    $check_order = $conn->prepare("SELECT * FROM orders WHERE product_id = ? AND user_id = ?");
-    $check_order->execute([$product_id, $user_id]);
-
-    if ($check_order->rowCount() > 0) {
-        $message = 'already';
-    } else {
-        $insert_order = $conn->prepare("INSERT INTO orders(user_id, product_id) VALUES(?, ?)");
-        $insert_order->execute([$user_id, $product_id]);
-        $message = 'success';
     }
 }
 
@@ -242,47 +212,47 @@ imageInput.addEventListener('change', function() {
 
     <div class="box-container">
         <?php
-        if($select_properties->rowCount() > 0){
-            while($fetch_product = $select_properties->fetch(PDO::FETCH_ASSOC)){
-            $select_user = $conn->prepare("SELECT * FROM users WHERE id = ?");
-            $select_user->execute([$fetch_product['user_id']]);
-            $fetch_user = $select_user->fetch(PDO::FETCH_ASSOC);
+            if($select_properties->rowCount() > 0){
+                while($fetch_product = $select_properties->fetch(PDO::FETCH_ASSOC)){
+                    $select_user = $conn->prepare("SELECT * FROM `users` WHERE id = ?");
+                    $select_user->execute([$fetch_product['user_id']]);
+                    $fetch_user = $select_user->fetch(PDO::FETCH_ASSOC);
         ?>
         <form action="" method="POST">
-        <div class="box">
-            <input type="hidden" name="product_id" value="<?= $fetch_product['id']; ?>">
-            <?php
-               $select_saved = $conn->prepare("SELECT * FROM saved WHERE product_id = ? and user_id = ?");
-            $select_saved->execute([$fetch_product['id'], $user_id]);
-            if($select_saved->rowCount() > 0){
-            ?>
-            <button type="submit" name="save" class="save"><i class="fas fa-heart"></i><span>saved</span></button>
-            <?php
-            }else{
-            ?>
-            <button type="submit" name="save" class="save"><i class="far fa-heart"></i><span>save</span></button>
-            <?php
-            }
-            ?>
-            <div class="thumb">
-            <img src="uploaded_files/<?= $fetch_product['image_01']; ?>" alt="">
-            </div>
-            <div class="admin">
-                <h3><?= substr($fetch_user['name'], 0, 1); ?></h3>
-                <div>
-                    <p><?= $fetch_user['name']; ?></p>
-                    <span><?= $fetch_product['date']; ?></span>
+            <div class="box">
+                <input type="hidden" name="product_id" value="<?= $fetch_product['id']; ?>">
+                <?php
+                    $select_saved = $conn->prepare("SELECT * FROM `saved` WHERE product_id = ? and user_id = ?");
+                    $select_saved->execute([$fetch_product['id'], $user_id]);
+                    if($select_saved->rowCount() > 0){
+                ?>
+                <button type="submit" name="save" class="save"><i class="fas fa-heart"></i><span>saved</span></button>
+                <?php
+                    }else{
+                ?>
+                <button type="submit" name="save" class="save"><i class="far fa-heart"></i><span>save</span></button>
+                <?php
+                    }
+                ?>
+                <div class="thumb">
+                    <img src="uploaded_files/<?= $fetch_product['image_01']; ?>" alt="">
+                </div>
+                <div class="admin">
+                    <h3><?= substr($fetch_user['name'], 0, 1); ?></h3>
+                    <div>
+                        <p><?= $fetch_user['name']; ?></p>
+                        <span><?= $fetch_product['date']; ?></span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="box">
-            <div class="price"><i class="fas fa-rupiah-sign"></i><span><?= $fetch_product['price']; ?></span></div>
-            <h3 class="name"><!--php--><?= $fetch_product['product_name']; ?></h3>
-            <p class="location"><i class="fas fa-map-marker-alt"></i><span><?= $fetch_product['address']; ?></span></p>
-            <div class="flex">
-                <p><i class="fas fa-layer-group"></i><span><?= $fetch_product['type']; ?></span></p>
-            </div>
-            <div class="flex-btn">
+            <div class="box">
+                <div class="price"><i class="fas fa-rupiah-sign"></i><span><?= $fetch_product['price']; ?></span></div>
+                <h3 class="name"><?= $fetch_product['product_name']; ?></h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i><span><?= $fetch_product['address']; ?></span></p>
+                <div class="flex">
+                    <p><i class="fas fa-layer-group"></i><span><?= $fetch_product['type']; ?></span></p>
+                </div>
+                <div class="flex-btn">
                     <a href="view_product.php?get_id=<?= $fetch_product['id']; ?>" class="btn">Lihat Produk</a>
                     <a href="tel:<?= $fetch_user['number']; ?>" class="btn">Hubungi Lessor</a>
                     <input type="submit" value="Pesan" name="send" class="btn">
