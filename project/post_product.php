@@ -232,9 +232,9 @@ function updateCategory() {
    category.innerHTML = '<option value="" disabled>Pilih Kategori</option>';
 
    const arr_category = {
-      tempat: ["Tempat Tinggal", "Tempat Acara", "Tempat Lainnya"],
-      barang: ["Elektronik", "Alat Rumah Tangga", "Alat Tidur dan Furnitur"],
-      kendaraan: ["Kendaraan roda dua", "Kendaraan roda empat", "Kendaraan konstruksi"]
+      "tempat": ["Tempat Tinggal", "Tempat Acara", "Tempat Lainnya"],
+      "barang": ["Elektronik", "Alat Rumah Tangga", "Alat Tidur dan Furnitur"],
+      "kendaraan": ["Kendaraan roda dua", "Kendaraan roda empat", "Kendaraan konstruksi"]
    };
 
    arr_category[type].forEach(sub => {
@@ -256,8 +256,8 @@ function updateSubCategory() {
    const arr_sub_category = {
       "kendaraan roda dua": ["motor", "sepeda"],
       "kendaraan roda empat": ["mobil"],
-      "kendaraan kontruksi": ["truk", "alat berat"], 
-      elektronik: ["laptop", "kamera", "drone", "sound system", "peralatan proyektor", "power bank", "webcam", "lainnya"],
+      "kendaraan konstruksi": ["truk", "alat berat"], 
+      "elektronik": ["laptop", "kamera", "drone", "sound system", "peralatan proyektor", "power bank", "webcam", "lainnya"],
       "alat rumah tangga": ["peralatan dapur", "peralatan pembersih"],
       "alat tidur dan furnitur": ["kasur inflable", "tempat tidur lipat", "set meja dan kursi portable", "kipas angin", "karpet", "lainnya"],
       "tempat tinggal": ["kost", "rumah", "apartemen"],
@@ -282,10 +282,10 @@ function updateSpecificCategory() {
 
    // Define sub-categories for each category
    const arr_specific_category = {
-      motor: ["motor manual", "motor matic", "motor kopling", "motor listrik", "lainnya"],
-      sepeda: ["sepeda gunung", "sepeda listrik", "sepeda lipat", "sepeda fixie", "lainnya"],
-      mobil: ["suv", "listrik", "sport & convertible", "van & mpv", "lainnya"],
-      truk: ["pickup", "box", "flatbed", "dump", "crane", "lainnya"],
+      "motor": ["motor manual", "motor matic", "motor kopling", "motor listrik", "lainnya"],
+      "sepeda": ["sepeda gunung", "sepeda listrik", "sepeda lipat", "sepeda fixie", "lainnya"],
+      "mobil": ["suv", "listrik", "sport & convertible", "van & mpv", "lainnya"],
+      "truk": ["pickup", "box", "flatbed", "dump", "crane", "lainnya"],
       "alat berat": ["excavator", "bulldozer", "wheel loader", "forklift", "skid steer", "grader", "dumper", "lainnya"],
       "peralatan dapur": ["blender", "mikser", "microwave", "lainnya"],
       "peralatan pembersih": ["vacuum cleaner", "sapu", "alat pel", "lainnya"],
